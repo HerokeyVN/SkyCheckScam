@@ -145,7 +145,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     async function fetchLegitimateData() {
         try {
-            const response = await fetch('./data/legit.json');
+            const response = await fetch('https://raw.githubusercontent.com/HerokeyVN/SkyCheckScam/refs/heads/main/data/legit.json');
             const data = await response.json();
             return data.data || [];
         } catch (error) {

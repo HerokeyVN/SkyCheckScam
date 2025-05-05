@@ -9,19 +9,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-    <title>Sky: Children of the Light - Scam Check</title>
+    <title data-lang-key="pageTitle">Sky: Children of the Light - Scam Check</title>
     <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
     <header>
         <div class="nav-buttons">
-            <a href="#searchResults" class="nav-btn"><i class="bi bi-search-heart"></i> Search</a>
-            <a href="#recentReports" class="nav-btn"><i class="bi bi-clock-history"></i> Recent Reports</a>
-            <a href="#scamReportForm" class="nav-btn"><i class="bi bi-shield-exclamation"></i> Report Scam</a>
+            <a href="#searchResults" class="nav-btn"><i class="bi bi-search-heart"></i> <span data-lang-key="navSearch">Search</span></a>
+            <a href="#recentReports" class="nav-btn"><i class="bi bi-clock-history"></i> <span data-lang-key="navRecentReports">Recent Reports</span></a>
+            <a href="#scamReportForm" class="nav-btn"><i class="bi bi-shield-exclamation"></i> <span data-lang-key="navReportScam">Report Scam</span></a>
         </div>
         <div class="menu">
             <div class="mini-search-section">
-                <input type="text" class="mini-search-box" placeholder="Quick search...">
+                <input type="text" class="mini-search-box" placeholder="Quick search..." data-lang-key="placeholderQuickSearch">
                 <button class="btn search-btn">
                     <i class="bi bi-search"></i>
                 </button>
@@ -42,7 +42,7 @@
 
     <div class="search-container" id="fullScreenSearch">
         <div class="search animated">
-            <input type="text" class="search-box" id="mainSearchBox" placeholder="Search for scammers...">
+            <input type="text" class="search-box" id="mainSearchBox" placeholder="Search for scammers..." data-lang-key="placeholderSearchScammers">
             <button class="search-btn" id="mainSearchBtn">
                 <i class="bi bi-search-heart"></i>
             </button>
@@ -50,116 +50,116 @@
     </div>
 
     <div class="content">
-        <h3 class="title">Check scammer for Sky: Children of the Light</h3>
+        <h3 class="title" data-lang-key="mainTitle">Check scammer for Sky: Children of the Light</h3>
         
         <div class="scroll-indicator" id="scrollToTop">
             <i class="bi bi-arrow-up"></i>
         </div>
         
         <div class="search main-search">
-            <input type="text" class="search-box" id="contentSearchBox" placeholder="Enter name, phone, bank account...">
+            <input type="text" class="search-box" id="contentSearchBox" placeholder="Enter name, phone, bank account..." data-lang-key="placeholderEnterInfo">
             <button class="search-btn" id="contentSearchBtn">
                 <i class="bi bi-search-heart"></i>
             </button>
         </div>
         
         <div class="results-container" id="searchResults">
-            <h4 class="section-title"><i class="bi bi-shield-exclamation"></i> Search Results</h4>
+            <h4 class="section-title"><i class="bi bi-shield-exclamation"></i> <span data-lang-key="titleSearchResults">Search Results</span></h4>
             <div class="search-instructions">
                 <i class="bi bi-info-circle"></i>
-                <p>Enter a Facebook name, phone number, bank account, or any other information to check if it matches known scammers.</p>
-                <p><strong>Search supports Vietnamese accents and case-insensitive matching.</strong></p>
+                <p data-lang-key="searchInstructions1">Enter a Facebook name, phone number, bank account, or any other information to check if it matches known scammers.</p>
+                <p><strong data-lang-key="searchInstructions2">Search supports Vietnamese accents and case-insensitive matching.</strong></p>
             </div>
         </div>
         
         <div class="recent-reports" id="recentReports">
-            <h4 class="section-title"><i class="bi bi-clock-history"></i> Recent Reports</h4>
+            <h4 class="section-title"><i class="bi bi-clock-history"></i> <span data-lang-key="titleRecentReports">Recent Reports</span></h4>
             <div class="reports-grid">
                 <div class="report-item">
                     <div class="report-icon danger"><i class="bi bi-exclamation-triangle"></i></div>
                     <div class="report-content">
-                        <h5>Account stolen after trading</h5>
-                        <p>User reported that after sharing login details for a season pass trade, they lost access to their account.</p>
-                        <span class="report-time">2 hours ago</span>
+                        <h5 data-lang-key="reportExample1Title">Account stolen after trading</h5>
+                        <p data-lang-key="reportExample1Desc">User reported that after sharing login details for a season pass trade, they lost access to their account.</p>
+                        <span class="report-time" data-lang-key="reportTimeExample1">2 hours ago</span>
                     </div>
                 </div>
                 
                 <div class="report-item">
                     <div class="report-icon warning"><i class="bi bi-exclamation-circle"></i></div>
                     <div class="report-content">
-                        <h5>Payment received but no candles delivered</h5>
-                        <p>Trader took payment but never delivered the promised seasonal candles.</p>
-                        <span class="report-time">5 hours ago</span>
+                        <h5 data-lang-key="reportExample2Title">Payment received but no candles delivered</h5>
+                        <p data-lang-key="reportExample2Desc">Trader took payment but never delivered the promised seasonal candles.</p>
+                        <span class="report-time" data-lang-key="reportTimeExample2">5 hours ago</span>
                     </div>
                 </div>
                 
                 <div class="report-item">
                     <div class="report-icon danger"><i class="bi bi-exclamation-triangle"></i></div>
                     <div class="report-content">
-                        <h5>Fake screenshot of gifting</h5>
-                        <p>User provided edited screenshots as proof of item delivery.</p>
-                        <span class="report-time">Yesterday</span>
+                        <h5 data-lang-key="reportExample3Title">Fake screenshot of gifting</h5>
+                        <p data-lang-key="reportExample3Desc">User provided edited screenshots as proof of item delivery.</p>
+                        <span class="report-time" data-lang-key="reportTimeExample3">Yesterday</span>
                     </div>
                 </div>
                 
                 <div class="report-item">
                     <div class="report-icon info"><i class="bi bi-info-circle"></i></div>
                     <div class="report-content">
-                        <h5>New scam method alert</h5>
-                        <p>Scammers are now asking for "temporary account access" to gift items.</p>
-                        <span class="report-time">2 days ago</span>
+                        <h5 data-lang-key="reportExample4Title">New scam method alert</h5>
+                        <p data-lang-key="reportExample4Desc">Scammers are now asking for "temporary account access" to gift items.</p>
+                        <span class="report-time" data-lang-key="reportTimeExample4">2 days ago</span>
                     </div>
                 </div>
             </div>
         </div>
         
         <div class="report-section">
-            <h4 class="section-title"><i class="bi bi-flag"></i> Submit a Scam Report</h4>
+            <h4 class="section-title"><i class="bi bi-flag"></i> <span data-lang-key="titleSubmitReport">Submit a Scam Report</span></h4>
             <form class="report-form" id="scamReportForm">
                 <div class="form-group">
-                    <label for="contactInfo">Contact Information of Scammer<span class="required-star">*</span></label>
-                    <input type="text" id="contactInfo" name="entry.1178867741" placeholder="Facebook URL, Phone Number, or Payment ID" required>
+                    <label for="contactInfo"><span data-lang-key="labelContactInfo">Contact Information of Scammer</span><span class="required-star">*</span></label>
+                    <input type="text" id="contactInfo" name="entry.1178867741" placeholder="Facebook URL, Phone Number, or Payment ID" data-lang-key="placeholderContactInfo" required>
                 </div>
                 
                 <div class="form-group">
-                    <label for="scamType">Type of Scam<span class="required-star">*</span></label>
+                    <label for="scamType"><span data-lang-key="labelScamType">Type of Scam</span><span class="required-star">*</span></label>
                     <select id="scamType" name="entry.2057600907" required>
-                        <option value="">Select scam type</option>
-                        <option value="Account Theft">Account Theft</option>
-                        <option value="Payment Without Delivery">Payment Without Delivery</option>
-                        <option value="Fake Middleman">Fake Middleman</option>
-                        <option value="Fake Screenshots/Evidence">Fake Screenshots/Evidence</option>
-                        <option value="Other">Other</option>
+                        <option value="" data-lang-key="optionSelectScamType">Select scam type</option>
+                        <option value="Account Theft" data-lang-key="optionAccountTheft">Account Theft</option>
+                        <option value="Payment Without Delivery" data-lang-key="optionPaymentNoDelivery">Payment Without Delivery</option>
+                        <option value="Fake Middleman" data-lang-key="optionFakeMiddleman">Fake Middleman</option>
+                        <option value="Fake Screenshots/Evidence" data-lang-key="optionFakeEvidence">Fake Screenshots/Evidence</option>
+                        <option value="Other" data-lang-key="optionOther">Other</option>
                     </select>
                 </div>
                 
                 <div class="form-group">
-                    <label for="description">Description of the Incident<span class="required-star">*</span></label>
-                    <textarea id="description" name="entry.708300666" rows="4" placeholder="Describe what happened in detail..." required></textarea>
+                    <label for="description"><span data-lang-key="labelDescription">Description of the Incident</span><span class="required-star">*</span></label>
+                    <textarea id="description" name="entry.708300666" rows="4" placeholder="Describe what happened in detail..." data-lang-key="placeholderDescription" required></textarea>
                 </div>
                 
                 <div class="form-group">
-                    <label for="warningLinks">Related Warning Articles or Reports</label>
-                    <textarea id="warningLinks" name="entry.414394640" rows="2" placeholder="Links to related warnings, articles or previous reports about this scammer..."></textarea>
-                    <p class="link-hint">Add links to Facebook posts, community warnings, or other reports about this scammer</p>
+                    <label for="warningLinks"><span data-lang-key="labelWarningLinks">Related Warning Articles or Reports</span></label>
+                    <textarea id="warningLinks" name="entry.414394640" rows="2" placeholder="Links to related warnings, articles or previous reports about this scammer..." data-lang-key="placeholderWarningLinks"></textarea>
+                    <p class="link-hint" data-lang-key="hintWarningLinks">Add links to Facebook posts, community warnings, or other reports about this scammer</p>
                 </div>
                 
                 <div class="form-group">
-                    <label for="evidenceUrl">Evidence URL (Optional)</label>
-                    <input type="text" id="evidenceUrl" name="entry.779698689" placeholder="Link to Google Drive folder or image sharing site">
-                    <p class="file-hint">Upload your screenshots to Google Drive or an image hosting site and paste the link here</p>
+                    <label for="evidenceUrl"><span data-lang-key="labelEvidenceUrl">Evidence URL (Optional)</span></label>
+                    <input type="text" id="evidenceUrl" name="entry.779698689" placeholder="Link to Google Drive folder or image sharing site" data-lang-key="placeholderEvidenceUrl">
+                    <p class="file-hint" data-lang-key="hintEvidenceUrl">Upload your screenshots to Google Drive or an image hosting site and paste the link here</p>
                 </div>
                 
                 <div class="form-group">
-                    <label for="reporterContact">Your Contact (Optional)</label>
-                    <input type="text" id="reporterContact" name="entry.760914841" placeholder="Your facebook, email or Discord username">
-                    <p class="contact-hint">We may contact you if we need more information</p>
+                    <label for="reporterContact"><span data-lang-key="labelReporterContact">Your Contact (Optional)</span></label>
+                    <input type="text" id="reporterContact" name="entry.760914841" placeholder="Your facebook, email or Discord username" data-lang-key="placeholderReporterContact">
+                    <p class="contact-hint" data-lang-key="hintReporterContact">We may contact you if we need more information</p>
                 </div>
                 
                 <div class="form-status" id="formStatus"></div>
                 
                 <button type="submit" class="btn submit-report-btn" id="submitReportBtn">
-                    <i class="bi bi-send"></i> Submit Report
+                    <i class="bi bi-send"></i> <span data-lang-key="btnSubmitReport">Submit Report</span>
                 </button>
             </form>
         </div>
@@ -167,20 +167,20 @@
         <div class="stats-section">
             <div class="stat-item">
                 <i class="bi bi-shield-x"></i>
-                <div class="stat-number">425</div>
-                <div class="stat-label">Confirmed Scammers</div>
+                <div class="stat-number" id="statConfirmedScammers">425</div>
+                <div class="stat-label" data-lang-key="statLabelConfirmed">Confirmed Scammers</div>
             </div>
             
             <div class="stat-item">
                 <i class="bi bi-search"></i>
-                <div class="stat-number">0</div>
-                <div class="stat-label">Searches This Month</div>
+                <div class="stat-number" id="statSearchesMonth">0</div>
+                <div class="stat-label" data-lang-key="statLabelSearches">Searches This Month</div>
             </div>
             
             <div class="stat-item">
                 <i class="bi bi-flag"></i>
-                <div class="stat-number">0</div>
-                <div class="stat-label">Reports This Month</div>
+                <div class="stat-number" id="statReportsMonth">0</div>
+                <div class="stat-label" data-lang-key="statLabelReports">Reports This Month</div>
             </div>
         </div>
     </div>
@@ -188,36 +188,38 @@
     <footer>
         <div class="footer-content">
             <div class="footer-section">
-                <h5>Sky Check Scam</h5>
-                <p>A community-driven platform to protect Sky players from scams and fraudulent trades.</p>
+                <h5 data-lang-key="footerTitle1">Sky Check Scam</h5>
+                <p data-lang-key="footerDesc1">A community-driven platform to protect Sky players from scams and fraudulent trades.</p>
             </div>
             
             <div class="footer-section">
-                <h5>Quick Links</h5>
+                <h5 data-lang-key="footerTitle2">Quick Links</h5>
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Report Scam</a></li>
-                    <li><a href="#">Verified Traders</a></li>
-                    <li><a href="#">Safe Trading Guide</a></li>
+                    <li><a href="#" data-lang-key="footerLinkHome">Home</a></li>
+                    <li><a href="#scamReportForm" data-lang-key="footerLinkReport">Report Scam</a></li>
+                    
                 </ul>
             </div>
             
             <div class="footer-section">
-                <h5>Community</h5>
+                <h5 data-lang-key="footerTitle3">Community</h5>
                 <ul>
-                    <li><a href="#">Discord Server</a></li>
-                    <li><a href="#">Facebook Group</a></li>
-                    <li><a href="#">Twitter</a></li>
-                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#" data-lang-key="footerLinkDiscord">Discord Server</a></li>
+                    <li><a href="https://www.facebook.com/groups/510031354073585" data-lang-key="footerLinkFacebook">Facebook Group</a></li>
+                    
+                    <li><a href="https://www.facebook.com/tienlam.nh/" data-lang-key="footerLinkContact">Contact me</a></li>
                 </ul>
             </div>
         </div>
         
         <div class="footer-bottom">
-            <p>&copy; 2025 Sky Check Scam. Not affiliated with thatgamecompany.</p>
+            <p data-lang-key="footerCopyright">&copy; 2025 Sky Check Scam. Not affiliated with thatgamecompany.</p>
         </div>
     </footer>
     
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    
+    <script src="./js/translations.js"></script>
     <script src="./js/common.js"></script>
     <script src="./js/search.js"></script>
     <script src="./js/report.js"></script>

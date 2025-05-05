@@ -216,6 +216,7 @@ document.addEventListener('DOMContentLoaded', function() {
             showMinimumLengthWarning();
             return;
         }
+        
         fullScreenSearch.classList.remove('active');
         miniSearchSection.classList.remove('hidden');
         if (resultsContainer) {
@@ -227,6 +228,31 @@ document.addEventListener('DOMContentLoaded', function() {
             `;
             resultsContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
+        
+        // Check if the search term is a Facebook URL and extract UID if it is
+        let finalSearchTerm = searchTerm;
+        let extractedUID = null;
+        let extractedName = null;
+        let needsManualExtraction = false;
+        
+        if (isFacebookURL(searchTerm)) {
+            try {
+                const fbData = await extractFacebookUID(searchTerm);
+                if (fbData && fbData.uid) {
+                    finalSearchTerm = fbData.uid;
+                    extractedUID = fbData.uid;
+                    extractedName = fbData.name;
+                    needsManualExtraction = fbData.needsManualExtraction;
+                    console.log("Extracted Facebook UID:", fbData.uid);
+                } else {
+                    needsManualExtraction = true;
+                }
+            } catch (error) {
+                console.error("Error extracting Facebook UID:", error);
+                needsManualExtraction = true;
+            }
+        }
+        
         if (!isScammerDataLoaded && !isLoadingScammerData) {
             isLoadingScammerData = true;
             try {
@@ -238,24 +264,118 @@ document.addEventListener('DOMContentLoaded', function() {
                 isLoadingScammerData = false;
             }
         }
+        
         let scammerResults = [];
         if (isScammerDataLoaded) {
-            scammerResults = searchScammers(scammerData, searchTerm);
+            scammerResults = searchScammers(scammerData, finalSearchTerm);
         }
-        displayCombinedResults(scammerResults, searchTerm);
+        
+        displayCombinedResults(scammerResults, searchTerm, extractedUID, needsManualExtraction);
         console.log("Search performed for:", searchTerm);
     }
 
-    function displayCombinedResults(scammerResults, searchTerm) {
+    // Function to check if a string is a Facebook URL
+    function isFacebookURL(str) {
+        return str.includes('facebook.com/') || str.includes('fb.com/');
+    }
+    
+    // Function to extract Facebook UID from URL using pattern matching
+    async function extractFacebookUID(url) {
+        try {
+            // Clean the URL if needed
+            url = url.trim();
+            
+            if (!url.startsWith('http')) {
+                url = 'https://' + url;
+            }
+            
+            // First try pattern matching for direct UID in URL
+            // Pattern 1: facebook.com/profile.php?id=100037910915086
+            const idPattern = /facebook\.com\/profile\.php\?id=(\d+)/i;
+            const idMatch = url.match(idPattern);
+            if (idMatch && idMatch[1]) {
+                return {
+                    uid: idMatch[1],
+                    name: null,
+                    needsManualExtraction: false
+                };
+            }
+            
+            // Pattern 2: facebook.com/username or fb.com/username
+            const usernamePattern = /facebook\.com\/([a-z0-9_.]+)|fb\.com\/([a-z0-9_.]+)/i;
+            const usernameMatch = url.match(usernamePattern);
+            
+            if (usernameMatch) {
+                const username = usernameMatch[1] || usernameMatch[2];
+                
+                // Skip some known non-profile paths
+                const nonProfilePaths = ['pages', 'groups', 'events', 'photos', 'watch', 'gaming', 'marketplace'];
+                if (nonProfilePaths.includes(username.toLowerCase())) {
+                    return {
+                        uid: null,
+                        name: null,
+                        needsManualExtraction: true
+                    };
+                }
+                
+                // For usernames, return the username but flag it for potential manual extraction
+                return {
+                    uid: username,
+                    name: null,
+                    needsManualExtraction: true
+                };
+            }
+            
+            // If we couldn't match a pattern, suggest manual extraction
+            return {
+                uid: null,
+                name: null,
+                needsManualExtraction: true
+            };
+        } catch (error) {
+            console.error("Error extracting Facebook UID:", error);
+            return {
+                uid: null,
+                name: null,
+                needsManualExtraction: true
+            };
+        }
+    }
+
+    function displayCombinedResults(scammerResults, searchTerm, extractedUID, needsManualExtraction) {
         if (!resultsContainer) return;
         resultsContainer.innerHTML = '';
         const resultsContent = document.createElement('div');
         resultsContent.className = 'search-results-content fade-in';
-        resultsContent.innerHTML = `
+        let searchHeader = `
             <div class="search-header">
-                <h2>Search Results for "<span class="search-term">${searchTerm}</span>"</h2>
+                <h2>${getTranslation('searchResultsFor')} "<span class="search-term">${searchTerm}</span>"</h2>
             </div>
         `;
+        
+        // Make the Facebook UID extraction suggestion more prominent
+        if (isFacebookURL(searchTerm)) {
+            if (extractedUID && !isNaN(extractedUID)) {
+                searchHeader += `<div class="uid-extraction-notice">
+                    <p><i class="bi bi-info-circle"></i> ${getTranslation('searchingWithUID')} ${extractedUID}</p>
+                </div>`;
+            } else {
+                // More prominent suggestion box
+                searchHeader += `
+                    <div class="uid-extraction-notice uid-suggestion" style="background-color: #fff3cd; color: #856404; padding: 15px; border-radius: 8px; margin: 15px 0; border: 1px solid #ffeeba; text-align: center;">
+                        <h4 style="color: #856404; margin-top: 0;"><i class="bi bi-exclamation-triangle" style="font-size: 1.5rem;"></i> Facebook UID Needed</h4>
+                        <p style="color: #856404;">${getTranslation('fbUidExtractionSuggestion')}</p>
+                        <a href="https://id.traodoisub.com/" target="_blank" class="btn" style="background: #007bff; color: white; text-decoration: none; display: inline-block; padding: 8px 20px; margin: 10px auto; border-radius: 4px; font-weight: bold;">
+                            <i class="bi bi-box-arrow-up-right"></i> ${getTranslation('visitUidTool')}
+                        </a>
+                        <p style="color: #6c757d; font-size: 0.9rem; font-style: italic;">Copy your Facebook URL, paste it in the tool, then search with the numeric ID</p>
+                    </div>
+                `;
+            }
+        }
+        
+        resultsContent.innerHTML = searchHeader;
+        
         const scammerSection = document.createElement('div');
         scammerSection.className = 'scammer-results-section';
         if (isScammerDataLoaded) {
@@ -347,6 +467,12 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
         `;
         return scammerCard;
+    }
+
+    // Helper function to get translation
+    function getTranslation(key) {
+        const currentLang = localStorage.getItem('language') || 'en';
+        return translations[currentLang][key] || translations.en[key] || key;
     }
 
     let lastScrollPosition = 0;

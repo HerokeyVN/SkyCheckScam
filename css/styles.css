@@ -266,6 +266,7 @@ header .mini-search-section.hidden {
     width: -webkit-fill-available;
     height: auto;
     min-height: 100vh;
+    margin-top: 65px;
     padding: 80px 20px 20px 20px;
 }
 
@@ -1153,4 +1154,70 @@ footer {
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     background: rgba(255, 255, 255, 0.95);
+}
+
+.highlight-suggestion {
+    background-color: #fff3cd;
+    border: 1px solid #ffeeba;
+    border-radius: 4px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.extraction-tool-btn {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.suggestion-tip {
+    margin-top: 10px;
+    font-style: italic;
+    color: #6c757d;
+}
+
+/* Update the highlight-suggestion styles to be more prominent */
+.uid-extraction-notice.uid-suggestion {
+    background-color: #fff3cd !important;
+    color: #856404 !important;
+    padding: 20px !important;
+    border-radius: 8px !important;
+    margin: 15px 0 25px 0 !important;
+    border: 2px solid #ffeeba !important;
+    text-align: center !important;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1) !important;
+}
+
+.uid-extraction-notice.uid-suggestion h4 {
+    color: #856404 !important;
+    margin-top: 0 !important;
+    font-size: 1.2rem !important;
+}
+
+.uid-extraction-notice.uid-suggestion .btn {
+    background: #007bff !important;
+    color: white !important;
+    text-decoration: none !important;
+    display: inline-block !important;
+    padding: 8px 20px !important;
+    margin: 10px auto !important;
+    border-radius: 4px !important;
+    font-weight: bold !important;
+    border: none !important;
+}
+
+.uid-extraction-notice.uid-suggestion .btn:hover {
+    background: #0069d9 !important;
+}
+
+.uid-extraction-notice.uid-suggestion p {
+    color: #856404 !important;
+    margin-bottom: 10px !important;
+}
+
+.uid-suggestion-tip {
+    color: #6c757d !important;
+    font-size: 0.9rem !important;
+    font-style: italic !important;
+    margin-top: 10px !important;
 }

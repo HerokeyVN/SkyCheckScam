@@ -140,4 +140,67 @@ document.addEventListener('DOMContentLoaded', function() {
     if (window.scrollY < 100) {
         updateActiveNavTab('#');
     }
+
+    // Use the translations global variable directly
+    // No need for import since translations.js is loaded by script tag before common.js
+    if (typeof translations !== 'undefined') {
+        initializeLanguageSystem(translations);
+    } else {
+        console.error('Translations not loaded. Make sure translations.js is included before common.js');
+    }
+
+    function initializeLanguageSystem(translations) {
+        const setLanguage = (lang) => {
+            document.documentElement.lang = lang;
+            document.querySelector('.current-lang').textContent = lang.toUpperCase();
+            localStorage.setItem('preferredLanguage', lang);
+
+            document.querySelectorAll('[data-lang-key]').forEach(element => {
+                const key = element.getAttribute('data-lang-key');
+                const translation = translations[lang]?.[key];
+
+                if (translation) {
+                    if (element.placeholder) {
+                        element.placeholder = translation;
+                    } else if (element.tagName === 'TITLE') {
+                        element.textContent = translation;
+                    } else if (key === 'footerCopyright') {
+                        element.innerHTML = translation;
+                    } else {
+                        element.textContent = translation;
+                    }
+                } else {
+                    console.warn(`Translation key "${key}" not found for language "${lang}".`);
+                }
+            });
+        };
+
+        const preferredLanguage = localStorage.getItem('preferredLanguage') || 'en';
+        setLanguage(preferredLanguage);
+
+        document.querySelectorAll('.language-dropdown a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const lang = link.getAttribute('data-lang');
+                setLanguage(lang);
+            });
+        });
+    }
+
+    const scrollToTopBtn = document.getElementById('scrollToTop');
+    if (scrollToTopBtn) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollToTopBtn.classList.add('visible');
+            } else {
+                scrollToTopBtn.classList.remove('visible');
+            }
+        });
+
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    } else {
+        console.warn("Scroll to top button element not found.");
+    }
 });

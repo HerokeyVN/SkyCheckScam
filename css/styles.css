@@ -248,104 +248,237 @@ header .mini-search-section.hidden {
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 }
 
-.section-title {
-    color: #eca08f;
-    font-size: 1.2rem;
-    margin-bottom: 20px;
+.search-instructions {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 10px;
-}
-
-.result-card {
-    display: flex;
-    background: rgba(255, 255, 255, 0.05);
+    text-align: center;
+    padding: 20px;
+    color: #e0e0e0;
+    background: rgba(236, 160, 143, 0.1);
     border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.search-instructions i {
+    font-size: 2rem;
+    color: #eca08f;
     margin-bottom: 15px;
-    padding: 15px;
-    position: relative;
-    overflow: hidden;
-    transition: all 0.3s ease;
 }
 
-.result-card:hover {
-    transform: translateY(-3px);
-    background: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-}
-
-.result-card .status-indicator {
-    width: 5px;
-    height: 100%;
-    position: absolute;
-    left: 0;
-    top: 0;
-}
-
-.result-card.safe .status-indicator {
-    background-color: #42b883;
-}
-
-.result-card.danger .status-indicator {
-    background-color: #ff5252;
-}
-
-.result-card.warning .status-indicator {
-    background-color: #ffaa00;
-}
-
-.result-details {
-    flex-grow: 1;
-    padding-left: 10px;
-}
-
-.result-details h5 {
-    font-size: 1.1rem;
-    margin: 0 0 10px 0;
-}
-
-.result-details p {
+.search-instructions p {
     margin: 5px 0;
-    font-size: 0.9rem;
+}
+
+/* Search warning message for minimum length */
+.search-warning {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    color: #e0e0e0;
+    background: rgba(255, 170, 0, 0.1);
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.search-warning i {
+    font-size: 2rem;
+    color: #ffaa00;
+    margin-bottom: 15px;
+}
+
+.search-warning p {
+    margin: 5px 0;
+}
+
+.search-warning strong {
+    color: #ffaa00;
+}
+
+/* Scammer Search Results Styles - Updated colors */
+.search-results-content {
+    opacity: 0;
+    animation: fadeIn 0.5s forwards;
+}
+
+.search-header {
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #83615c;
+    padding-bottom: 1rem;
+}
+
+.search-header h2 {
+    margin: 0;
+    color: #eca08f;
+    font-size: 1.5rem;
+}
+
+.search-term {
+    color: #fff;
+    font-weight: 600;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.section-header h3 {
+    color: #eca08f;
+    margin: 0;
+}
+
+.result-count {
+    background-color: rgba(236, 160, 143, 0.2);
+    color: #eca08f;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 14px;
+}
+
+.scammer-results-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    margin-bottom: 2rem;
+}
+
+.scammer-card {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: 1px solid rgba(236, 160, 143, 0.2);
+}
+
+.scammer-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    background: rgba(236, 160, 143, 0.15);
+}
+
+.scammer-header {
+    background-color: rgba(236, 160, 143, 0.2);
+    padding: 15px;
+    border-bottom: 1px solid rgba(131, 97, 92, 0.5);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.scammer-header h3 {
+    margin: 0;
+    color: #fafaf8;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.scammer-id {
+    background-color: #eca08f;
+    color: #1a1a1a;
+    padding: 3px 8px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.scammer-details {
+    padding: 15px;
+}
+
+.scammer-details p {
+    margin: 8px 0;
     color: #e0e0e0;
 }
 
-.label {
-    font-weight: 500;
-    color: #b8b2a6;
-}
-
-.status-safe {
-    color: #42b883;
+.scammer-details p strong {
+    color: #eca08f;
     font-weight: 500;
 }
 
-.status-danger {
-    color: #ff5252;
+.bank-info, .fb-uid-info, .warnings-info {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px dashed rgba(131, 97, 92, 0.5);
+}
+
+.bank-info h4, .fb-uid-info h4, .warnings-info h4 {
+    margin-top: 0;
+    color: #eca08f;
     font-weight: 500;
 }
 
-.status-warning {
-    color: #ffaa00;
-    font-weight: 500;
+.bank-info ul, .fb-uid-info ul, .warnings-info ul {
+    padding-left: 20px;
+    color: #e0e0e0;
 }
 
-.result-actions {
+.bank-info li, .fb-uid-info li, .warnings-info li {
+    margin-bottom: 8px;
+    word-break: break-all;
+}
+
+.fb-uid-info a, .warnings-info a {
+    color: #f1e0bf;
+    text-decoration: underline;
+    transition: color 0.2s;
+}
+
+.fb-uid-info a:hover, .warnings-info a:hover {
+    color: #eca08f;
+}
+
+.no-results {
+    text-align: center;
+    padding: 2rem;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    color: #e0e0e0;
+}
+
+.loading-message {
     display: flex;
+    flex-direction: column;
     align-items: center;
+    padding: 2rem;
+    color: #e0e0e0;
 }
 
-.action-btn {
-    background: rgba(236, 160, 143, 0.3);
-    border: 1px solid #eca08f;
-    padding: 8px 12px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.2s;
+.search-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3rem 0;
+    color: #e0e0e0;
 }
 
-.action-btn:hover {
-    background: rgba(236, 160, 143, 0.5);
+/* Animation for search results */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease forwards;
+}
+
+/* Fix some text colors in scammer cards */
+.scammer-card .scammer-details a {
+    color: #eca08f;
+}
+
+.scammer-card .scammer-details h4 {
+    color: #eca08f;
 }
 
 /* Recent Reports Section */

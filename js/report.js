@@ -1,116 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Elements
-    const header = document.querySelector('header');
-    const miniSearchSection = document.querySelector('.mini-search-section');
-    const fullScreenSearch = document.getElementById('fullScreenSearch');
-    const scrollToTop = document.getElementById('scrollToTop');
-    const resultsContainer = document.getElementById('searchResults');
-    const mainSearchBox = document.getElementById('mainSearchBox');
-    const miniSearchBox = document.querySelector('.mini-search-box');
-    const mainSearchBtn = document.getElementById('mainSearchBtn');
-    
-    // Synchronize search input between mini and main search boxes
-    miniSearchBox.addEventListener('input', function() {
-        mainSearchBox.value = this.value;
-    });
-    
-    mainSearchBox.addEventListener('input', function() {
-        miniSearchBox.value = this.value;
-    });
-    
-    // Search functionality
-    mainSearchBtn.addEventListener('click', function() {
-        if (mainSearchBox.value.trim() !== '') {
-            performSearch();
-        }
-    });
-    
-    if (document.querySelector('.mini-search-section .search-btn')) {
-        document.querySelector('.mini-search-section .search-btn').addEventListener('click', function() {
-            if (miniSearchBox.value.trim() !== '') {
-                performSearch();
-            } else {
-                // If mini search is empty, focus the main search
-                fullScreenSearch.classList.add('active');
-                miniSearchSection.classList.add('hidden');
-                setTimeout(() => mainSearchBox.focus(), 500);
-            }
-        });
-    }
-    
-    function performSearch() {
-        // Add animation to search results
-        fullScreenSearch.classList.remove('active');
-        miniSearchSection.classList.remove('hidden');
-        
-        // Show search results with animation
-        if (resultsContainer) {
-            resultsContainer.classList.add('fade-in');
-            // Scroll to results
-            resultsContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-        
-        // Here you would normally perform an actual search
-        console.log("Searching for:", mainSearchBox.value || miniSearchBox.value);
-    }
-    
-    // Scroll event handler
-    let lastScrollPosition = 0;
-    window.addEventListener('scroll', function() {
-        const currentScrollPosition = window.pageYOffset;
-        
-        // Show/hide scroll to top button
-        if (scrollToTop) {
-            if (currentScrollPosition > 300) {
-                scrollToTop.classList.add('visible');
-            } else {
-                scrollToTop.classList.remove('visible');
-            }
-        }
-        
-        // Unified search bar visibility logic
-        if (currentScrollPosition < 50) {
-            // At the very top - HIDE mini search
-            if (miniSearchSection && !miniSearchSection.classList.contains('hidden')) {
-                miniSearchSection.classList.add('hidden');
-            }
-            if (fullScreenSearch) fullScreenSearch.classList.remove('active');
-        } else if (currentScrollPosition > 100) {
-            // Scrolled down - SHOW mini search
-            if (fullScreenSearch) fullScreenSearch.classList.remove('active');
-            if (miniSearchSection && miniSearchSection.classList.contains('hidden')) {
-                miniSearchSection.classList.remove('hidden');
-                miniSearchSection.classList.add('fade-in-element');
-                setTimeout(() => {
-                    miniSearchSection.classList.remove('fade-in-element');
-                }, 500);
-            }
-        }
-        
-        lastScrollPosition = currentScrollPosition;
-    });
-    
-    // Scroll to top functionality
-    if (scrollToTop) {
-        scrollToTop.addEventListener('click', function() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-    }
-    
-    // Initial check for page position (if page is refreshed while scrolled down)
-    if (window.pageYOffset < 50) {
-        // At the top - hide mini search
-        if (fullScreenSearch) fullScreenSearch.classList.remove('active');
-        if (miniSearchSection) miniSearchSection.classList.add('hidden');
-    } else {
-        // Scrolled down - show mini search
-        if (fullScreenSearch) fullScreenSearch.classList.remove('active');
-        if (miniSearchSection) miniSearchSection.classList.remove('hidden');
-    }
-
     // Google Form Integration with custom form
     const scamReportForm = document.getElementById('scamReportForm');
     const formStatus = document.getElementById('formStatus');
@@ -207,6 +95,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Fetch and display recent reports from Google Sheets
+    fetchRecentReports();
+
     function fetchRecentReports() {
         const reportsContainer = document.querySelector('.reports-grid');
         if (!reportsContainer) return;
@@ -334,41 +224,41 @@ document.addEventListener('DOMContentLoaded', function() {
                 useBackupData();
             }
         }, 5000);
+    }
+    
+    // Function to use backup data when API fails
+    function useBackupData() {
+        console.log('Using backup data for recent reports');
         
-        // Function to use backup data when API fails
-        function useBackupData() {
-            console.log('Using backup data for recent reports');
-            
-            // Sample backup data
-            const backupReports = [
-                {
-                    timestamp: new Date(Date.now() - 2 * 60 * 60 * 1000).toString(), // 2 hours ago
-                    scamType: 'Account Theft',
-                    description: 'User reported that after sharing login details for a season pass trade, they lost access to their account.',
-                    contactInfo: 'facebook.com/fake.account.123'
-                },
-                {
-                    timestamp: new Date(Date.now() - 5 * 60 * 60 * 1000).toString(), // 5 hours ago
-                    scamType: 'Payment Without Delivery',
-                    description: 'Trader took payment but never delivered the promised seasonal candles.',
-                    contactInfo: '+84 987 654 321'
-                },
-                {
-                    timestamp: new Date(Date.now() - 24 * 60 * 60 * 1000).toString(), // 1 day ago
-                    scamType: 'Fake Screenshots/Evidence',
-                    description: 'User provided edited screenshots as proof of item delivery.',
-                    contactInfo: 'sky.scammer@email.com'
-                },
-                {
-                    timestamp: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toString(), // 2 days ago
-                    scamType: 'Other',
-                    description: 'Scammers are now asking for "temporary account access" to gift items.',
-                    contactInfo: 'discord:user#1234'
-                }
-            ];
-            
-            displayReports(backupReports);
-        }
+        // Sample backup data
+        const backupReports = [
+            {
+                timestamp: new Date(Date.now() - 2 * 60 * 60 * 1000).toString(), // 2 hours ago
+                scamType: 'Account Theft',
+                description: 'User reported that after sharing login details for a season pass trade, they lost access to their account.',
+                contactInfo: 'facebook.com/fake.account.123'
+            },
+            {
+                timestamp: new Date(Date.now() - 5 * 60 * 60 * 1000).toString(), // 5 hours ago
+                scamType: 'Payment Without Delivery',
+                description: 'Trader took payment but never delivered the promised seasonal candles.',
+                contactInfo: '+84 987 654 321'
+            },
+            {
+                timestamp: new Date(Date.now() - 24 * 60 * 60 * 1000).toString(), // 1 day ago
+                scamType: 'Fake Screenshots/Evidence',
+                description: 'User provided edited screenshots as proof of item delivery.',
+                contactInfo: 'sky.scammer@email.com'
+            },
+            {
+                timestamp: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toString(), // 2 days ago
+                scamType: 'Other',
+                description: 'Scammers are now asking for "temporary account access" to gift items.',
+                contactInfo: 'discord:user#1234'
+            }
+        ];
+        
+        displayReports(backupReports);
     }
     
     // Display reports in the container
@@ -484,7 +374,4 @@ document.addEventListener('DOMContentLoaded', function() {
         
         return 'Just now';
     }
-    
-    // Call the function to fetch reports when the page loads
-    fetchRecentReports();
 });

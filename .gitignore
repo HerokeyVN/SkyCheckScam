@@ -1,0 +1,10 @@
+# Ignore specific files
+.hintrc
+scammers_data.json
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore node modules if you're using npm
+node_modules/

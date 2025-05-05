@@ -1,0 +1,34 @@
+{
+  "files": [
+    {
+      "fileName": "scammers_1_100.json",
+      "startId": "SCS1",
+      "endId": "SCS100",
+      "count": 100
+    },
+    {
+      "fileName": "scammers_101_200.json",
+      "startId": "SCS101",
+      "endId": "SCS200",
+      "count": 100
+    },
+    {
+      "fileName": "scammers_201_300.json",
+      "startId": "SCS201",
+      "endId": "SCS300",
+      "count": 100
+    },
+    {
+      "fileName": "scammers_301_400.json",
+      "startId": "SCS301",
+      "endId": "SCS400",
+      "count": 100
+    },
+    {
+      "fileName": "scammers_401_425.json",
+      "startId": "SCS401",
+      "endId": "SCS425",
+      "count": 25
+    }
+  ]
+}

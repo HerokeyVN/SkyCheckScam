@@ -137,6 +137,29 @@
             "service": [
                 "Seller"
             ]
+        },
+        {
+            "id": "LG10",
+            "fbName": "Minh Tú",
+            "bank": [
+                {
+                    "bankName": "CIMB",
+                    "bankNumber": "00336500748593",
+                    "name": "TRAN PHAM MINH TU"
+                },
+                {
+                    "bankName": "Paypal",
+                    "bankNumber": "@nhok0169",
+                    "name": "Trần Phạm Tú"
+                }
+            ],
+            "fbUID": [
+                "100013473586124",
+                "nhokvip0169"
+            ],
+            "service": [
+                "Libfun key seller"
+            ]
         }
     ]
 }

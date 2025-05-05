@@ -1,0 +1,142 @@
+{
+    "data": [
+        {
+            "id": "LG1",
+            "fbName": "Tú Yên",
+            "bank": [
+                {
+                    "bankName": "TECHCOMBANK",
+                    "bankNumber": "*******747",
+                    "name": "DO THI THANH TUYEN"
+                },
+                {
+                    "bankName": "Paypal",
+                    "bankNumber": "****.t2310@gmail.com",
+                    "name": "DO THI THANH TUYEN"
+                }
+            ],
+            "fbUID": [
+                "100011008661801",
+                "neyu.t2310"
+            ],
+            "service": [
+                "Midman",
+                "Seller",
+                "Seller Account"
+            ]
+        },
+        {
+            "id": "LG2",
+            "fbName": "Hạ Viễn",
+            "fbUID": [
+                "100009086756995",
+                "dnkwww"
+            ],
+            "service": [
+                "Midman",
+                "Seller"
+            ]
+        },
+        {
+            "id": "LG3",
+            "fbName": "Lê Tuấn Minh",
+            "fbUID": [
+                "100007225990536",
+                "Leizee251"
+            ],
+            "service": [
+                "Sheet music seller"
+            ]
+        },
+        {
+            "id": "LG4",
+            "fbName": "Huỳnh Phước",
+            "fbUID": [
+                "100017643735829",
+                "phuocnobu",
+                "huynh.phuoc.124330"
+            ],
+            "service": [
+                "Seller",
+                "Midman",
+                "Seller Account"
+            ]
+        },
+        {
+            "id": "LG5",
+            "fbName": "Minh Anh",
+            "fbUID": [
+                "100085425849260",
+                "lim.bo05"
+            ],
+            "service": [
+                "Seller",
+                "Seller Account"
+            ]
+        },
+        {
+            "id": "LG6",
+            "fbName": "Sạp nhà Bee",
+            "bank": [
+                {
+                    "bankName": "Vietinbank",
+                    "bankNumber": "100882764942",
+                    "name": "LE THI TRA MI"
+                }
+            ],
+            "fbUID": [
+                "61563478438166"
+            ],
+            "service": [
+                "Seller"
+            ]
+        },
+        {
+            "id": "LG7",
+            "fbName": "Duật Gems / Trần Duật",
+            "fbUID": [
+                "100023158430758",
+                "duattran966",
+                "100064102112535",
+                "duatgems"
+            ],
+            "service": [
+                "Seller"
+            ]
+        },
+        {
+            "id": "LG8",
+            "fbName": "Thanh Trần Kim",
+            "fbUID": [
+                "100073985830783",
+                "gianthuongsky"
+            ],
+            "service": [
+                "Seller"
+            ]
+        },
+        {
+            "id": "LG9",
+            "fbName": "Phạm Hiếu",
+            "bank": [
+                {
+                    "bankName": "MB Bank",
+                    "bankNumber": "0826795958",
+                    "name": "PHAM TRUNG HIEU"
+                },
+                {
+                    "bankName": "Momo",
+                    "bankNumber": "0826795958",
+                    "name": "PHAM TRUNG HIEU"
+                }
+            ],
+            "fbUID": [
+                "100047085452963",
+                "Shoppasspack"
+            ],
+            "service": [
+                "Seller"
+            ]
+        }
+    ]
+}

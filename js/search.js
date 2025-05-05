@@ -10,8 +10,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const contentSearchBox = document.getElementById('contentSearchBox');
     const contentSearchBtn = document.getElementById('contentSearchBtn');
     let scammerData = [];
+    let legitimateData = [];
     let isScammerDataLoaded = false;
+    let isLegitimateDataLoaded = false;
     let isLoadingScammerData = false;
+    let isLoadingLegitimateData = false;
 
     if (contentSearchBox) {
         contentSearchBox.addEventListener('input', function() {
@@ -140,6 +143,17 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    async function fetchLegitimateData() {
+        try {
+            const response = await fetch('./data/legit.json');
+            const data = await response.json();
+            return data.data || [];
+        } catch (error) {
+            console.error("Error fetching legitimate users data:", error);
+            return [];
+        }
+    }
+
     function normalizeVietnameseText(text) {
         if (!text) return '';
         let normalizedText = String(text).toLowerCase();
@@ -209,6 +223,46 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    function searchLegitimateUsers(legitUsers, searchQuery) {
+        if (!searchQuery || searchQuery.trim() === '') {
+            return [];
+        }
+        const normalizedQuery = normalizeVietnameseText(searchQuery.trim());
+        return legitUsers.filter(user => {
+            if (user.fbName && normalizeVietnameseText(user.fbName).includes(normalizedQuery)) {
+                return true;
+            }
+            if (user.service && user.service.length) {
+                for (const service of user.service) {
+                    if (normalizeVietnameseText(service).includes(normalizedQuery)) {
+                        return true;
+                    }
+                }
+            }
+            if (user.bank && user.bank.length) {
+                for (const bankInfo of user.bank) {
+                    if (bankInfo.bankName && normalizeVietnameseText(bankInfo.bankName).includes(normalizedQuery)) {
+                        return true;
+                    }
+                    if (bankInfo.bankNumber && normalizeVietnameseText(bankInfo.bankNumber).includes(normalizedQuery)) {
+                        return true;
+                    }
+                    if (bankInfo.name && normalizeVietnameseText(bankInfo.name).includes(normalizedQuery)) {
+                        return true;
+                    }
+                }
+            }
+            if (user.fbUID && user.fbUID.length) {
+                for (const uid of user.fbUID) {
+                    if (normalizeVietnameseText(uid).includes(normalizedQuery)) {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        });
+    }
+
     async function performCombinedSearch() {
         const searchTerm = mainSearchBox.value.trim() || miniSearchBox.value.trim() || 
                           (contentSearchBox ? contentSearchBox.value.trim() : '');
@@ -253,6 +307,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
         
+        // Load scammer data if not already loaded
         if (!isScammerDataLoaded && !isLoadingScammerData) {
             isLoadingScammerData = true;
             try {
@@ -265,32 +320,45 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
         
+        // Load legitimate users data if not already loaded
+        if (!isLegitimateDataLoaded && !isLoadingLegitimateData) {
+            isLoadingLegitimateData = true;
+            try {
+                legitimateData = await fetchLegitimateData();
+                isLegitimateDataLoaded = true;
+            } catch (error) {
+                console.error("Error loading legitimate users data:", error);
+            } finally {
+                isLoadingLegitimateData = false;
+            }
+        }
+        
         let scammerResults = [];
         if (isScammerDataLoaded) {
             scammerResults = searchScammers(scammerData, finalSearchTerm);
         }
         
-        displayCombinedResults(scammerResults, searchTerm, extractedUID, needsManualExtraction);
+        let legitimateResults = [];
+        if (isLegitimateDataLoaded) {
+            legitimateResults = searchLegitimateUsers(legitimateData, finalSearchTerm);
+        }
+        
+        displayCombinedResults(scammerResults, legitimateResults, searchTerm, extractedUID, needsManualExtraction);
         console.log("Search performed for:", searchTerm);
     }
 
-    // Function to check if a string is a Facebook URL
     function isFacebookURL(str) {
         return str.includes('facebook.com/') || str.includes('fb.com/');
     }
     
-    // Function to extract Facebook UID from URL using pattern matching
     async function extractFacebookUID(url) {
         try {
-            // Clean the URL if needed
             url = url.trim();
             
             if (!url.startsWith('http')) {
                 url = 'https://' + url;
             }
             
-            // First try pattern matching for direct UID in URL
-            // Pattern 1: facebook.com/profile.php?id=100037910915086
             const idPattern = /facebook\.com\/profile\.php\?id=(\d+)/i;
             const idMatch = url.match(idPattern);
             if (idMatch && idMatch[1]) {
@@ -301,14 +369,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 };
             }
             
-            // Pattern 2: facebook.com/username or fb.com/username
             const usernamePattern = /facebook\.com\/([a-z0-9_.]+)|fb\.com\/([a-z0-9_.]+)/i;
             const usernameMatch = url.match(usernamePattern);
             
             if (usernameMatch) {
                 const username = usernameMatch[1] || usernameMatch[2];
                 
-                // Skip some known non-profile paths
                 const nonProfilePaths = ['pages', 'groups', 'events', 'photos', 'watch', 'gaming', 'marketplace'];
                 if (nonProfilePaths.includes(username.toLowerCase())) {
                     return {
@@ -318,7 +384,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     };
                 }
                 
-                // For usernames, return the username but flag it for potential manual extraction
                 return {
                     uid: username,
                     name: null,
@@ -326,7 +391,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 };
             }
             
-            // If we couldn't match a pattern, suggest manual extraction
             return {
                 uid: null,
                 name: null,
@@ -342,7 +406,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    function displayCombinedResults(scammerResults, searchTerm, extractedUID, needsManualExtraction) {
+    function displayCombinedResults(scammerResults, legitimateResults, searchTerm, extractedUID, needsManualExtraction) {
         if (!resultsContainer) return;
         resultsContainer.innerHTML = '';
         const resultsContent = document.createElement('div');
@@ -353,14 +417,12 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
         `;
         
-        // Make the Facebook UID extraction suggestion more prominent
         if (isFacebookURL(searchTerm)) {
             if (extractedUID && !isNaN(extractedUID)) {
                 searchHeader += `<div class="uid-extraction-notice">
                     <p><i class="bi bi-info-circle"></i> ${getTranslation('searchingWithUID')} ${extractedUID}</p>
                 </div>`;
             } else {
-                // More prominent suggestion box
                 searchHeader += `
                     <div class="uid-extraction-notice uid-suggestion" style="background-color: #fff3cd; color: #856404; padding: 15px; border-radius: 8px; margin: 15px 0; border: 1px solid #ffeeba; text-align: center;">
                         <h4 style="color: #856404; margin-top: 0;"><i class="bi bi-exclamation-triangle" style="font-size: 1.5rem;"></i> Facebook UID Needed</h4>
@@ -376,11 +438,47 @@ document.addEventListener('DOMContentLoaded', function() {
         
         resultsContent.innerHTML = searchHeader;
         
+        const legitimateSection = document.createElement('div');
+        legitimateSection.className = 'legitimate-results-section';
+        if (isLegitimateDataLoaded) {
+            legitimateSection.innerHTML = `
+                <div class="section-header" style="margin-top: 20px;">
+                    <h3 style="color: #42b883;">Trusted Users Results</h3>
+                    <span class="result-count" style="background-color: rgba(66, 184, 131, 0.2); color: #42b883;">${legitimateResults.length} result(s)</span>
+                </div>
+            `;
+            if (legitimateResults.length > 0) {
+                const legitimateGrid = document.createElement('div');
+                legitimateGrid.className = 'scammer-results-list';
+                legitimateResults.forEach(user => {
+                    const userCard = createLegitimateUserCard(user);
+                    legitimateGrid.appendChild(userCard);
+                });
+                legitimateSection.appendChild(legitimateGrid);
+            } else {
+                const noResults = document.createElement('div');
+                noResults.className = 'no-results';
+                noResults.innerHTML = '<p>No trusted users found matching your search criteria.</p>';
+                legitimateSection.appendChild(noResults);
+            }
+        } else {
+            legitimateSection.innerHTML = `
+                <div class="section-header" style="margin-top: 20px;">
+                    <h3 style="color: #42b883;">Trusted Users</h3>
+                </div>
+                <div class="loading-message">
+                    <div class="loading-spinner"></div>
+                    <p>Loading trusted users database...</p>
+                </div>
+            `;
+        }
+        resultsContent.appendChild(legitimateSection);
+        
         const scammerSection = document.createElement('div');
         scammerSection.className = 'scammer-results-section';
         if (isScammerDataLoaded) {
             scammerSection.innerHTML = `
-                <div class="section-header">
+                <div class="section-header" style="margin-top: 30px;">
                     <h3>Scammer Database Results</h3>
                     <span class="result-count">${scammerResults.length} result(s)</span>
                 </div>
@@ -413,6 +511,65 @@ document.addEventListener('DOMContentLoaded', function() {
         resultsContent.appendChild(scammerSection);
         resultsContainer.appendChild(resultsContent);
         resultsContainer.classList.add('fade-in');
+    }
+
+    function createLegitimateUserCard(user) {
+        const userCard = document.createElement('div');
+        userCard.className = 'scammer-card';
+        userCard.style.border = '1px solid rgba(66, 184, 131, 0.5)';
+        
+        let bankInfoHTML = '';
+        if (user.bank && user.bank.length) {
+            bankInfoHTML = '<div class="bank-info"><h4 style="color: #42b883;">Bank Information</h4><ul>';
+            user.bank.forEach(bank => {
+                let bankDetails = [];
+                if (bank.bankName) bankDetails.push(`<strong>Bank:</strong> ${bank.bankName}`);
+                if (bank.bankNumber) bankDetails.push(`<strong>Number:</strong> ${bank.bankNumber}`);
+                if (bank.name) bankDetails.push(`<strong>Name:</strong> ${bank.name}`);
+                if (bankDetails.length > 0) {
+                    bankInfoHTML += `<li>${bankDetails.join(' - ')}</li>`;
+                }
+            });
+            bankInfoHTML += '</ul></div>';
+        }
+        
+        let fbUIDHTML = '';
+        if (user.fbUID && user.fbUID.length) {
+            fbUIDHTML = '<div class="fb-uid-info"><h4 style="color: #42b883;">Facebook IDs</h4><ul>';
+            user.fbUID.forEach(uid => {
+                fbUIDHTML += `<li><a href="https://www.facebook.com/${uid}" target="_blank" rel="noopener noreferrer">${uid}</a></li>`;
+            });
+            fbUIDHTML += '</ul></div>';
+        }
+        
+        let serviceHTML = '';
+        if (user.service && user.service.length) {
+            serviceHTML = '<div class="service-info"><h4 style="color: #42b883;">Trusted Services</h4><ul>';
+            user.service.forEach(service => {
+                serviceHTML += `<li>${service}</li>`;
+            });
+            serviceHTML += '</ul></div>';
+        }
+        
+        userCard.innerHTML = `
+            <div class="scammer-header" style="background-color: rgba(66, 184, 131, 0.2);">
+                <h3>${user.fbName || 'Trusted User'}</h3>
+                <span class="scammer-id" style="background-color: #42b883;">${user.id}</span>
+            </div>
+            <div class="scammer-details">
+                ${user.fbName ? `<p><strong>Facebook Name:</strong> ${user.fbName}</p>` : ''}
+                <div style="background-color: rgba(66, 184, 131, 0.1); padding: 10px; border-radius: 5px; margin: 10px 0;">
+                    <p style="color: #42b883; font-weight: bold; margin: 0;">
+                        <i class="bi bi-check-circle" style="margin-right: 5px;"></i>
+                        This is a verified trusted user
+                    </p>
+                </div>
+                ${serviceHTML}
+                ${bankInfoHTML}
+                ${fbUIDHTML}
+            </div>
+        `;
+        return userCard;
     }
 
     function createScammerCard(scammer) {
@@ -469,7 +626,6 @@ document.addEventListener('DOMContentLoaded', function() {
         return scammerCard;
     }
 
-    // Helper function to get translation
     function getTranslation(key) {
         const currentLang = localStorage.getItem('language') || 'en';
         return translations[currentLang][key] || translations.en[key] || key;

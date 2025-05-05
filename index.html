@@ -13,25 +13,33 @@
     <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
-    <!-- <img class="exam" src="./assets/images/exam.png" alt=""> -->
     <header>
-        <a href="#" class="logo">SCS</a>
+        <div class="nav-buttons">
+            <a href="#searchResults" class="nav-btn"><i class="bi bi-search-heart"></i> Search</a>
+            <a href="#recentReports" class="nav-btn"><i class="bi bi-clock-history"></i> Recent Reports</a>
+            <a href="#scamReportForm" class="nav-btn"><i class="bi bi-shield-exclamation"></i> Report Scam</a>
+        </div>
         <div class="menu">
             <div class="mini-search-section">
-                <input type="text" class="mini-search-box" placeholder="Link fb, sdt, stk...">
+                <input type="text" class="mini-search-box" placeholder="Quick search...">
                 <button class="btn search-btn">
-                    <img src="./assets/icons/line_in.svg" alt="search icon" width="16">
-                    Search
-                    <img src="./assets/icons/line_out.svg" alt="search icon" width="16">
+                    <i class="bi bi-search"></i>
                 </button>
             </div>
-            <i class="bi bi-chat-heart"></i>
-            <i class="bi bi-question-circle"></i> 
-            <i class="bi bi-info-circle"></i>
+            <div class="header-icons">
+                <div class="language-selector">
+                    <span class="current-lang">EN</span>
+                    <i class="bi bi-globe"></i>
+                    <div class="language-dropdown">
+                        <a href="#" data-lang="en">English</a>
+                        <a href="#" data-lang="vi">Tiếng Việt</a>
+                    </div>
+                </div>
+                <i class="bi bi-info-circle"></i>
+            </div>
         </div>
     </header>
 
-    <!-- Full screen search container -->
     <div class="search-container" id="fullScreenSearch">
         <div class="search animated">
             <input type="text" class="search-box" id="mainSearchBox" placeholder="Search for scammers...">
@@ -44,7 +52,6 @@
     <div class="content">
         <h3 class="title">Check scammer for Sky: Children of the Light</h3>
         
-        <!-- Scroll to top indicator -->
         <div class="scroll-indicator" id="scrollToTop">
             <i class="bi bi-arrow-up"></i>
         </div>
@@ -56,7 +63,6 @@
             </button>
         </div>
         
-        <!-- Search Results Section - Updated for scammer search -->
         <div class="results-container" id="searchResults">
             <h4 class="section-title"><i class="bi bi-shield-exclamation"></i> Search Results</h4>
             <div class="search-instructions">
@@ -64,11 +70,9 @@
                 <p>Enter a Facebook name, phone number, bank account, or any other information to check if it matches known scammers.</p>
                 <p><strong>Search supports Vietnamese accents and case-insensitive matching.</strong></p>
             </div>
-            <!-- Dynamic search results will be inserted here by JavaScript -->
         </div>
         
-        <!-- Recent Reports Section -->
-        <div class="recent-reports">
+        <div class="recent-reports" id="recentReports">
             <h4 class="section-title"><i class="bi bi-clock-history"></i> Recent Reports</h4>
             <div class="reports-grid">
                 <div class="report-item">
@@ -109,7 +113,6 @@
             </div>
         </div>
         
-        <!-- Submit Report Section -->
         <div class="report-section">
             <h4 class="section-title"><i class="bi bi-flag"></i> Submit a Scam Report</h4>
             <form class="report-form" id="scamReportForm">
@@ -161,35 +164,27 @@
             </form>
         </div>
         
-        <!-- Stats Section -->
         <div class="stats-section">
             <div class="stat-item">
-                <i class="bi bi-shield-check"></i>
-                <div class="stat-number">2,481</div>
-                <div class="stat-label">Verified Safe Traders</div>
-            </div>
-            
-            <div class="stat-item">
                 <i class="bi bi-shield-x"></i>
-                <div class="stat-number">947</div>
+                <div class="stat-number">425</div>
                 <div class="stat-label">Confirmed Scammers</div>
             </div>
             
             <div class="stat-item">
                 <i class="bi bi-search"></i>
-                <div class="stat-number">12,354</div>
+                <div class="stat-number">0</div>
                 <div class="stat-label">Searches This Month</div>
             </div>
             
             <div class="stat-item">
                 <i class="bi bi-flag"></i>
-                <div class="stat-number">831</div>
+                <div class="stat-number">0</div>
                 <div class="stat-label">Reports This Month</div>
             </div>
         </div>
     </div>
     
-    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-section">
@@ -219,11 +214,10 @@
         </div>
         
         <div class="footer-bottom">
-            <p>&copy; 2023 Sky Check Scam. Not affiliated with thatgamecompany.</p>
+            <p>&copy; 2025 Sky Check Scam. Not affiliated with thatgamecompany.</p>
         </div>
     </footer>
     
-    <!-- Load JS files - split into common, search, and report -->
     <script src="./js/common.js"></script>
     <script src="./js/search.js"></script>
     <script src="./js/report.js"></script>

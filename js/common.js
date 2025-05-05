@@ -1,7 +1,4 @@
-// Common utility functions and shared UI handling
-
 document.addEventListener('DOMContentLoaded', function() {
-    // Animation styles
     const styleElement = document.createElement('style');
     styleElement.textContent = `
         @keyframes typing {
@@ -40,7 +37,6 @@ document.addEventListener('DOMContentLoaded', function() {
     `;
     document.head.appendChild(styleElement);
     
-    // Scroll to top button functionality
     const scrollToTop = document.getElementById('scrollToTop');
     if (scrollToTop) {
         scrollToTop.addEventListener('click', function() {
@@ -51,7 +47,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Add header scroll effect
     const header = document.querySelector('header');
     window.addEventListener('scroll', function() {
         if (window.scrollY > 100) {
@@ -60,4 +55,89 @@ document.addEventListener('DOMContentLoaded', function() {
             header.classList.remove('scrolled');
         }
     });
+    
+    document.querySelectorAll('.nav-btn').forEach(link => {
+        link.addEventListener('click', function(e) {
+            if (this.getAttribute('href').startsWith('#') && this.getAttribute('href').length > 1) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    updateActiveNavTab(targetId);
+                }
+            }
+        });
+    });
+    
+    const languageLinks = document.querySelectorAll('.language-dropdown a');
+    const currentLang = document.querySelector('.current-lang');
+    
+    languageLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const language = this.getAttribute('data-lang');
+            currentLang.textContent = language.toUpperCase();
+            console.log(`Switching language to: ${language}`);
+        });
+    });
+    
+    function updateActiveNavTab(currentSectionId) {
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        
+        const activeButton = document.querySelector(`.nav-btn[href="${currentSectionId}"]`);
+        if (activeButton) {
+            activeButton.classList.add('active');
+        }
+    }
+    
+    window.addEventListener('scroll', function() {
+        if (!this.isScrolling) {
+            this.isScrolling = true;
+            setTimeout(() => {
+                highlightNavBasedOnScroll();
+                this.isScrolling = false;
+            }, 100);
+        }
+    });
+    
+    setTimeout(highlightNavBasedOnScroll, 300);
+    
+    function highlightNavBasedOnScroll() {
+        const sections = [
+            document.getElementById('searchResults'),
+            document.getElementById('recentReports'),
+            document.getElementById('scamReportForm')
+        ].filter(section => section !== null);
+        
+        const homeSection = { 
+            id: 'home',
+            offsetTop: 0,
+            getBoundingClientRect: () => ({ top: -window.scrollY, bottom: window.innerHeight })
+        };
+        
+        let currentSection = homeSection;
+        const scrollPosition = window.scrollY + window.innerHeight / 3;
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            
+            if (scrollPosition >= sectionTop - 100) {
+                currentSection = section;
+            }
+        });
+        
+        updateActiveNavTab('#' + (currentSection.id || 'home'));
+    }
+    
+    if (window.scrollY < 100) {
+        updateActiveNavTab('#');
+    }
 });

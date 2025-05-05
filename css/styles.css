@@ -21,7 +21,7 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-attachment: fixed; /* This makes the background stay fixed when scrolling */
+    background-attachment: fixed;
 }
 
 .exam {
@@ -46,20 +46,59 @@ header {
     background-position: center;
     background-repeat: no-repeat;
     border-bottom: 2px solid #b8b2a6;
-    z-index: 100; /* Increased z-index to ensure header is always on top */
+    z-index: 100;
+    padding: 0 20px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
 }
 
-header .logo {
+.nav-buttons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.nav-btn {
+    display: flex;
+    align-items: center;
     color: #fafaf8;
-    margin: 0 10px;
-    font-size: 44px;
-    letter-spacing: 8px;
+    padding: 8px 15px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    font-weight: 500;
+    position: relative;
+}
+
+.nav-btn i {
+    margin-right: 5px;
+    font-size: 1.1rem;
+}
+
+.nav-btn:hover, .nav-btn.active {
+    background: rgba(236, 160, 143, 0.3);
+    color: #eca08f;
+    transform: translateY(-2px);
+}
+
+.nav-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 5px;
+    height: 5px;
+    background-color: #eca08f;
+    border-radius: 50%;
 }
 
 header .menu {
-    margin: 0 20px;
+    margin: 0;
     display: flex;
     align-items: center;
+    gap: 15px;
 }
 
 header .menu i {
@@ -73,15 +112,49 @@ header .menu i:hover {
 }
 
 header .menu .mini-search-box {
-    width: 190px;
-    padding: 7px;
-    border: 1px solid #b8b2a6;
+    width: 180px;
+    padding: 8px 12px;
+    border: 1px solid rgba(236, 160, 143, 0.5);
     border-radius: 25px;
-    margin-right: 10px;
-    color: #000;
+    background: rgba(0, 0, 0, 0.2);
+    color: #fafaf8;
+    transition: all 0.3s ease;
+}
+
+header .mini-search-box::placeholder {
+    color: rgba(250, 250, 248, 0.6);
+}
+
+header .mini-search-box:focus {
+    outline: none;
+    border-color: #eca08f;
+    background: rgba(0, 0, 0, 0.4);
+    width: 220px;
+}
+
+header .menu .search-btn {
+    background: rgba(236, 160, 143, 0.7);
+    color: #fafaf8;
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-left: -33px;
+    transition: all 0.3s ease;
+    padding: 0;
+}
+
+header .menu .search-btn:hover {
+    background: #eca08f;
+    transform: scale(1.1);
 }
 
 header .mini-search-section {
+    position: relative;
     display: flex;
     align-items: center;
     transition: all 0.4s ease;
@@ -91,6 +164,77 @@ header .mini-search-section.hidden {
     opacity: 0;
     transform: translateY(-20px);
     pointer-events: none;
+}
+
+.header-icons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-right: 35px;
+}
+
+.header-icons i {
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.header-icons i:hover {
+    color: #eca08f;
+    transform: scale(1.1);
+}
+
+.language-selector {
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-left: 10px;
+    padding: 5px 10px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    background: rgba(0, 0, 0, 0.2);
+    gap: 5px;
+}
+
+.language-selector:hover {
+    background: rgba(236, 160, 143, 0.2);
+}
+
+.current-lang {
+    margin-right: 5px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.language-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 8px;
+    padding: 8px 0;
+    min-width: 120px;
+    display: none;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    z-index: 110;
+}
+
+.language-selector:hover .language-dropdown {
+    display: block;
+    animation: fadeIn 0.3s ease forwards;
+}
+
+.language-dropdown a {
+    display: block;
+    padding: 8px 15px;
+    color: #e0e0e0;
+    transition: background 0.2s;
+}
+
+.language-dropdown a:hover {
+    background: rgba(236, 160, 143, 0.3);
+    color: #eca08f;
 }
 
 .btn {
@@ -177,7 +321,6 @@ header .mini-search-section.hidden {
     text-shadow: 0px 0px 10px rgba(0, 0, 0, 1);
 }
 
-/* Scroll-based header search animation */
 .header-scroll-control {
     position: fixed;
     top: 0;
@@ -188,7 +331,6 @@ header .mini-search-section.hidden {
     opacity: 0;
 }
 
-/* Animation for header elements */
 @keyframes fadeInDown {
     from {
         opacity: 0;
@@ -204,12 +346,10 @@ header .mini-search-section.hidden {
     animation: fadeInDown 0.5s ease forwards;
 }
 
-/* Hide the old fullscreen search container */
 .search-container {
     display: none;
 }
 
-/* Scroll indicator */
 .scroll-indicator {
     position: fixed;
     bottom: 20px;
@@ -237,7 +377,6 @@ header .mini-search-section.hidden {
     background: rgba(236, 160, 143, 1);
 }
 
-/* Search Results Section */
 .results-container {
     width: 80%;
     max-width: 900px;
@@ -270,7 +409,6 @@ header .mini-search-section.hidden {
     margin: 5px 0;
 }
 
-/* Search warning message for minimum length */
 .search-warning {
     display: flex;
     flex-direction: column;
@@ -297,7 +435,6 @@ header .mini-search-section.hidden {
     color: #ffaa00;
 }
 
-/* Scammer Search Results Styles - Updated colors */
 .search-results-content {
     opacity: 0;
     animation: fadeIn 0.5s forwards;
@@ -456,7 +593,6 @@ header .mini-search-section.hidden {
     color: #e0e0e0;
 }
 
-/* Animation for search results */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -472,7 +608,6 @@ header .mini-search-section.hidden {
     animation: fadeIn 0.5s ease forwards;
 }
 
-/* Fix some text colors in scammer cards */
 .scammer-card .scammer-details a {
     color: #eca08f;
 }
@@ -481,7 +616,6 @@ header .mini-search-section.hidden {
     color: #eca08f;
 }
 
-/* Recent Reports Section */
 .recent-reports {
     width: 80%;
     max-width: 900px;
@@ -556,7 +690,6 @@ header .mini-search-section.hidden {
     margin-top: 10px;
 }
 
-/* Loading reports styling */
 .loading-reports {
     display: flex;
     justify-content: center;
@@ -584,7 +717,6 @@ header .mini-search-section.hidden {
     gap: 10px;
 }
 
-/* Report Form Section */
 .report-section {
     width: 80%;
     max-width: 900px;
@@ -602,7 +734,7 @@ header .mini-search-section.hidden {
 }
 
 .form-group {
-    margin-bottom: 15px;
+    margin: 10px 10px;
 }
 
 .form-group label {
@@ -688,7 +820,6 @@ header .mini-search-section.hidden {
     font-weight: 500;
 }
 
-/* Styling for invalid form fields */
 .form-group input.error,
 .form-group select.error,
 .form-group textarea.error {
@@ -696,7 +827,6 @@ header .mini-search-section.hidden {
     box-shadow: 0 0 4px rgba(255, 82, 82, 0.5);
 }
 
-/* Form status messages */
 .form-status {
     margin: 15px 0;
     grid-column: span 2;
@@ -725,7 +855,6 @@ header .mini-search-section.hidden {
     gap: 10px;
 }
 
-/* Form loading animation */
 .loading-spinner {
     display: inline-block;
     width: 20px;
@@ -741,7 +870,6 @@ header .mini-search-section.hidden {
     to { transform: rotate(360deg); }
 }
 
-/* Stats Section */
 .stats-section {
     width: 80%;
     max-width: 900px;
@@ -787,7 +915,6 @@ header .mini-search-section.hidden {
     font-size: 0.9rem;
 }
 
-/* Footer */
 footer {
     background: url('../assets/images/header_texture.jpg');
     background-size: cover;
@@ -848,7 +975,6 @@ footer {
     font-size: 0.8rem;
 }
 
-/* Media Queries for Responsive Design */
 @media (max-width: 768px) {
     .content {
         padding: 80px 10px 10px;
@@ -867,12 +993,73 @@ footer {
     
     .report-form {
         grid-template-columns: 1fr;
+        gap: 0;
     }
     
+    .form-group {
+        margin: 0 0 15px 0;
+        width: 100%;
+    }
+    
+    .form-group label {
+        font-size: 16px;
+        margin-bottom: 8px;
+    }
+    
+    .form-group input[type="text"],
+    .form-group select,
+    .form-group textarea {
+        padding: 12px;
+        font-size: 16px;
+        border-radius: 8px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .form-group textarea {
+        min-height: 100px;
+    }
+    
+    .file-hint,
+    .contact-hint,
+    .link-hint {
+        font-size: 13px;
+        line-height: 1.4;
+    }
+    
+    .form-group:nth-child(1),
+    .form-group:nth-child(2),
     .form-group:nth-child(3),
+    .form-group:nth-child(4),
     .form-group:nth-child(5),
-    .submit-report-btn {
+    .form-group:nth-child(6) {
         grid-column: 1;
+    }
+    
+    .submit-report-btn {
+        width: 100%;
+        padding: 14px 20px;
+        font-size: 16px;
+        margin: 10px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        border-radius: 30px;
+    }
+    
+    .submit-report-btn i {
+        font-size: 18px;
+    }
+    
+    .form-status {
+        margin: 10px 0;
+    }
+    
+    .section-title {
+        font-size: 18px;
+        text-align: center;
+        margin-bottom: 15px;
     }
     
     header .menu {
@@ -893,7 +1080,66 @@ footer {
     }
 }
 
-/* Google Form iframe styling */
+@media (max-width: 480px) {
+    .report-section {
+        width: 100%;
+        border-radius: 8px;
+        padding: 15px 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    }
+    
+    .form-group label {
+        font-size: 15px;
+    }
+    
+    .form-group {
+        margin: 0 0 12px 0;
+    }
+    
+    .form-group input[type="text"],
+    .form-group select,
+    .form-group textarea {
+        padding: 12px 10px;
+    }
+    
+    .success-message,
+    .error-message {
+        padding: 8px;
+        font-size: 14px;
+    }
+    
+    .form-group + .form-group {
+        margin-top: 15px;
+    }
+}
+
+@media (max-width: 992px) {
+    header {
+        justify-content: flex-end;
+    }
+    
+    .nav-buttons {
+        display: none;
+    }
+    
+    header .menu {
+        margin-left: auto;
+    }
+    
+    .mobile-menu-toggle {
+        display: block;
+        font-size: 1.5rem;
+        cursor: pointer;
+        margin-right: auto;
+    }
+}
+
+@media (min-width: 993px) {
+    .mobile-menu-toggle {
+        display: none;
+    }
+}
+
 .google-form-container {
     position: relative;
     width: 100%;

@@ -5,11 +5,10 @@
       "phone": "",
       "bank": [],
       "fbName": "Nazn Farklo",
-      "realName": "https://www.facebook.com/groups/601782460765259/permalink/1655034795440015/",
       "fbUID": [
         "61571750357787"
       ],
-      "linkWarn": "",
+      "linkWarn": "https://www.facebook.com/groups/601782460765259/permalink/1655034795440015/",
       "method": {
         "vi_VN": "",
         "en_US": ""
@@ -19,9 +18,10 @@
       "id": "SCS402",
       "phone": "0982946480",
       "bank": [],
-      "fbName": "https://www.facebook.com/profile.php?id=61571750357787",
       "realName": "Tiên Thủy",
-      "fbUID": [],
+      "fbUID": [
+        "61571750357787"
+      ],
       "linkWarn": "",
       "method": {
         "vi_VN": "",
@@ -33,9 +33,8 @@
       "phone": "0982946480",
       "bank": [],
       "fbName": "Tiên Thủy",
-      "realName": "https://www.facebook.com/groups/880927309569928/permalink/1344814063181248/",
       "fbUID": [],
-      "linkWarn": "",
+      "linkWarn": "https://www.facebook.com/groups/880927309569928/permalink/1344814063181248/",
       "method": {
         "vi_VN": "",
         "en_US": ""
@@ -45,7 +44,7 @@
       "id": "SCS404",
       "phone": "0982946480",
       "bank": [],
-      "fbName": "https://www.facebook.com/thuy.tien.180488/",
+      "fbName": "thuy.tien.180488",
       "realName": "Day Rin",
       "fbUID": [],
       "linkWarn": "",
@@ -72,7 +71,6 @@
       "phone": "0982946480",
       "bank": [],
       "fbName": "Kim Hoàng",
-      "realName": "MB BANK",
       "fbUID": [],
       "linkWarn": "",
       "method": {
@@ -84,7 +82,7 @@
       "id": "SCS407",
       "phone": "",
       "bank": [],
-      "fbName": "Hoang An  (Trung Gian Uy Tín)",
+      "fbName": "Hoang An (Trung Gian Uy Tín)",
       "realName": "Tran Van Hoang An",
       "fbUID": [],
       "linkWarn": "",
@@ -97,7 +95,7 @@
       "id": "SCS408",
       "phone": "",
       "bank": [],
-      "fbName": "Gấu Nhồi Bông  (Đầu Gấu)",
+      "fbName": "Gấu Nhồi Bông (Đầu Gấu)",
       "realName": "共立 ダリン",
       "fbUID": [
         "100050999833856"
@@ -126,9 +124,9 @@
       "phone": "",
       "bank": [],
       "fbName": "Trân Hà Vương Nhi",
-      "realName": "https://www.facebook.com/groups/5156015887837115/permalink/8635775406527795/",
+      "realName": "",
       "fbUID": [],
-      "linkWarn": "",
+      "linkWarn": "https://www.facebook.com/groups/5156015887837115/permalink/8635775406527795/",
       "method": {
         "vi_VN": "",
         "en_US": ""
@@ -138,7 +136,7 @@
       "id": "SCS411",
       "phone": "",
       "bank": [],
-      "fbName": "https://www.facebook.com/han.vien.trinh.2024/",
+      "fbName": "han.vien.trinh.2024",
       "realName": "Do Xuan Hai",
       "fbUID": [],
       "linkWarn": "",
@@ -191,9 +189,9 @@
       "phone": "",
       "bank": [
         {
-          "bankName": "Quoc",
-          "bankNumber": "Hung",
-          "name": "VQRQAASWW2702 MB Bank – Nguyen"
+          "bankName": "Nguyen Quoc Hung",
+          "bankNumber": "MB Bank",
+          "name": "0904363309  – "
         },
         {
           "bankName": "Duy",
@@ -203,32 +201,32 @@
         {
           "bankName": "Duy",
           "bankNumber": "Hoang",
-          "name": "– 0904363309 Momo – Nguyen"
+          "name": "– 0904363309"
         },
         {
           "bankName": "Duy",
           "bankNumber": "Hoang",
-          "name": "– 93612968888 TP Bank – Nguyen"
+          "name": "– 93612968888"
         },
         {
           "bankName": "Duy",
           "bankNumber": "Hoang",
-          "name": "– 5555550000 MB Bank – Nguyen"
+          "name": "– 5555550000"
         },
         {
           "bankName": "Chi",
           "bankNumber": "Ton",
-          "name": "– 00003649533 TP Bank – Bui Hoang"
+          "name": "– 00003649533"
         },
         {
           "bankName": "Duy",
           "bankNumber": "Hoang",
-          "name": "– 0812309999 MB Bank – Nguyen"
+          "name": "– 0812309999"
         },
         {
           "bankName": "Duy",
           "bankNumber": "Hoang",
-          "name": "– 2525019999 MB Bank – Nguyen"
+          "name": "– 2525019999"
         }
       ],
       "fbName": "Nguyễn Phong",

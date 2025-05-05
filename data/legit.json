@@ -160,6 +160,16 @@
             "service": [
                 "Libfun key seller"
             ]
+        },
+        {
+            "id": "LG11",
+            "fbName": "KChip",
+            "fbUID": [
+                "100013473586124"
+            ],
+            "service": [
+                "Sheet music seller"
+            ]
         }
     ]
 }

@@ -205,6 +205,17 @@
             "service": [
                 "Account service"
             ]
+        },
+        {
+            "id": "LG15",
+            "fbName": "Aki",
+            "fbUID": [
+                "61555655652609",
+                "aqui.288490"
+            ],
+            "service": [
+                "Account seller"
+            ]
         }
     ]
 }

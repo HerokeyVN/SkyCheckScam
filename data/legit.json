@@ -181,6 +181,19 @@
             "service": [
                 "Seller"
             ]
+        },
+        {
+            "id": "LG13",
+            "fbName": "Camellia Cam",
+            "fbUID": [
+                "100077685060606",
+                "nouuu13"
+            ],
+            "service": [
+                "Seller",
+                "Midman",
+                "Seller Account"
+            ]
         }
     ]
 }

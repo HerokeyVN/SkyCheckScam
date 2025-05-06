@@ -194,6 +194,17 @@
                 "Midman",
                 "Seller Account"
             ]
+        },
+        {
+            "id": "LG14",
+            "fbName": "Eric Edwards (Hayun)",
+            "fbUID": [
+                "61553719517024",
+                "nwk.hayun.louis"
+            ],
+            "service": [
+                "Account service"
+            ]
         }
     ]
 }

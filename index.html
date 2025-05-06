@@ -224,7 +224,17 @@
     <!-- Add CounterAPI Script -->
     <script src="https://counterapi.com/c.js" async></script>
     <script>
-        document.querySelector("#statSearchesMonth .thecount").innerText = Number(document.querySelector("#statSearchesMonth .thecount").innerText)
+        function convertCountToNumber() {
+            const countElement = document.querySelector("#statSearchesMonth .thecount");
+            if (countElement) {
+                countElement.innerText = Number(countElement.innerText);
+            } else {
+                setTimeout(convertCountToNumber, 1000); // Check again after 500ms
+            }
+        }
+        
+        // Start checking for the element
+        convertCountToNumber();
     </script>
 </body>
 </html>

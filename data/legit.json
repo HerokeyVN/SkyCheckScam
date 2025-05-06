@@ -160,6 +160,40 @@
             "service": [
                 "Libfun key seller"
             ]
+        },
+        {
+            "id": "LG11",
+            "fbName": "KChip",
+            "fbUID": [
+                "100013473586124"
+            ],
+            "service": [
+                "Sheet music seller"
+            ]
+        },
+        {
+            "id": "LG12",
+            "fbName": "Neit Tnii",
+            "fbUID": [
+                "61563772301467",
+                "tni304"
+            ],
+            "service": [
+                "Seller"
+            ]
+        },
+        {
+            "id": "LG13",
+            "fbName": "Camellia Cam",
+            "fbUID": [
+                "100077685060606",
+                "nouuu13"
+            ],
+            "service": [
+                "Seller",
+                "Midman",
+                "Seller Account"
+            ]
         }
     ]
 }

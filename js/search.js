@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
         contentSearchBtn.addEventListener('click', function() {
             if (contentSearchBox) {
                 const searchTerm = contentSearchBox.value.trim();
-                if (searchTerm.length > 6) {
+                if (searchTerm.length > 3) {
                     performCombinedSearch();
                 } else if (searchTerm !== '') {
                     showMinimumLengthWarning();
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     mainSearchBtn.addEventListener('click', function() {
         const searchTerm = mainSearchBox.value.trim();
-        if (searchTerm.length > 6) {
+        if (searchTerm.length > 3) {
             performCombinedSearch();
         } else if (searchTerm !== '') {
             showMinimumLengthWarning();
@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (document.querySelector('.mini-search-section .search-btn')) {
         document.querySelector('.mini-search-section .search-btn').addEventListener('click', function() {
             const searchTerm = miniSearchBox.value.trim();
-            if (searchTerm.length > 6) {
+            if (searchTerm.length > 3) {
                 performCombinedSearch();
             } else if (searchTerm !== '') {
                 showMinimumLengthWarning();
@@ -76,8 +76,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 <h4 class="section-title"><i class="bi bi-shield-exclamation"></i> Search Results</h4>
                 <div class="search-warning">
                     <i class="bi bi-exclamation-triangle"></i>
-                    <p>Vui lòng nhập từ khóa tìm kiếm nhiều hơn 6 ký tự</p>
-                    <p><strong>Please enter more than 6 characters to search</strong></p>
+                    <p>Vui lòng nhập từ khóa tìm kiếm nhiều hơn 4 ký tự</p>
+                    <p><strong>Please enter more than 4 characters to search</strong></p>
                 </div>
             `;
             resultsContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function() {
     mainSearchBox.addEventListener('keyup', function(event) {
         if (event.key === 'Enter') {
             const searchTerm = this.value.trim();
-            if (searchTerm.length > 6) {
+            if (searchTerm.length > 3) {
                 performCombinedSearch();
             } else if (searchTerm !== '') {
                 showMinimumLengthWarning();
@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function() {
     miniSearchBox.addEventListener('keyup', function(event) {
         if (event.key === 'Enter') {
             const searchTerm = this.value.trim();
-            if (searchTerm.length > 6) {
+            if (searchTerm.length > 3) {
                 performCombinedSearch();
             } else if (searchTerm !== '') {
                 showMinimumLengthWarning();
@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', function() {
         contentSearchBox.addEventListener('keyup', function(event) {
             if (event.key === 'Enter') {
                 const searchTerm = this.value.trim();
-                if (searchTerm.length > 6) {
+                if (searchTerm.length > 3) {
                     performCombinedSearch();
                 } else if (searchTerm !== '') {
                     showMinimumLengthWarning();
@@ -266,7 +266,7 @@ document.addEventListener('DOMContentLoaded', function() {
     async function performCombinedSearch() {
         const searchTerm = mainSearchBox.value.trim() || miniSearchBox.value.trim() || 
                           (contentSearchBox ? contentSearchBox.value.trim() : '');
-        if (searchTerm.length <= 6) {
+        if (searchTerm.length <= 3) {
             showMinimumLengthWarning();
             return;
         }

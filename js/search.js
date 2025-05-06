@@ -675,4 +675,40 @@ document.addEventListener('DOMContentLoaded', function() {
         if (fullScreenSearch) fullScreenSearch.classList.remove('active');
         if (miniSearchSection) miniSearchSection.classList.remove('hidden');
     }
+
+    // Get all search buttons
+    const searchButtons = [
+        document.querySelector('.search-btn'),
+        document.getElementById('mainSearchBtn'),
+        document.getElementById('contentSearchBtn')
+    ];
+    
+    // Attach event listeners to each search button
+    searchButtons.forEach(button => {
+        if (button) {
+            button.addEventListener('click', function() {
+                // Increment search counter when any search button is clicked
+                fetch('https://counterapi.com/api/skycheck.scam/search')
+                    .catch(error => console.log('Counter API increment error:', error));
+            });
+        }
+    });
+    
+    // Also increment counter when Enter key is pressed in search boxes
+    const searchBoxes = [
+        document.querySelector('.mini-search-box'),
+        document.getElementById('mainSearchBox'),
+        document.getElementById('contentSearchBox')
+    ];
+    
+    searchBoxes.forEach(box => {
+        if (box) {
+            box.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    fetch('https://counterapi.com/api/skycheck.scam/search')
+                        .catch(error => console.log('Counter API increment error:', error));
+                }
+            });
+        }
+    });
 });

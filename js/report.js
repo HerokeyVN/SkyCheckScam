@@ -29,6 +29,10 @@ document.addEventListener('DOMContentLoaded', function() {
             submitBtn.innerHTML = '<div class="loading-spinner"></div> Submitting...';
             formStatus.innerHTML = '<div class="info-message"><i class="bi bi-info-circle"></i> Submitting your report...</div>';
             
+            // Increment report counter
+            fetch('https://counterapi.com/api/skycheck.scam/report')
+                .catch(error => console.log('Counter API increment error:', error));
+            
             const formData = new FormData(scamReportForm);
             
             const iframe = document.createElement('iframe');
@@ -223,6 +227,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     function displayReports(reports) {
+        document.getElementById('statReportsMonth').innerText = reports.length;
         const reportsContainer = document.querySelector('.reports-grid');
         if (!reportsContainer) return;
         

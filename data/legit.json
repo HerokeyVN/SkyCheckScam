@@ -241,6 +241,78 @@
                 "Seller",
                 "Account seller"
             ]
+        },
+        {
+            "id": "LG18",
+            "fbName": "l.đan イ (ruleen)",
+            "bank": [
+                {
+                    "bankName": "MB Bank",
+                    "bankNumber": "0356501700",
+                    "name": "nguyen ha linh dan"
+                }
+            ],
+            "fbUID": [
+                "100088192992295",
+                "linhdan1409.2k7"
+            ],
+            "service": [
+                "Heart Seller (libfun)"
+            ]
+        },
+        {
+            "id": "LG19",
+            "fbName": "Sạp Tim Candy",
+            "bank": [
+                {
+                    "bankName": "Techcombank",
+                    "bankNumber": "80488888888",
+                    "name": "Ly Minh Hoan"
+                }
+            ],
+            "fbUID": [
+                "61573780342660",
+                "blood.moon.sky"
+            ],
+            "service": [
+                "Heart Seller (libfun)"
+            ]
+        },
+        {
+            "id": "LG20",
+            "fbName": "shop tim icream",
+            "bank": [
+                {
+                    "bankName": "Vietcombank",
+                    "bankNumber": "1038293787",
+                    "name": "Nguyen Trong Minh"
+                }
+            ],
+            "fbUID": [
+                "61559329741913",
+                "shoptimicream"
+            ],
+            "service": [
+                "Heart Seller (libfun)"
+            ]
+        },
+        {
+            "id": "LG21",
+            "fbName": "Lưu Ngọc Phương",
+            "bank": [
+                {
+                    "bankName": "Techcombank",
+                    "bankNumber": "9820012005",
+                    "name": "Lưu Ngọc Phương"
+                }
+            ],
+            "fbUID": [
+                "100027989918359",
+                "lnphuong.05"
+            ],
+            "service": [
+                "Heart Seller (libfun)"
+            ]
         }
     ]
 }

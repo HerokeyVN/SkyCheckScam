@@ -255,7 +255,7 @@
                 "linhdan1409.2k7"
             ],
             "service": [
-                "Heart Seller (libfun)"
+                "Heart Seller"
             ]
         },
         {
@@ -273,7 +273,7 @@
                 "blood.moon.sky"
             ],
             "service": [
-                "Heart Seller (libfun)"
+                "Heart Seller"
             ]
         },
         {
@@ -291,7 +291,7 @@
                 "shoptimicream"
             ],
             "service": [
-                "Heart Seller (libfun)"
+                "Heart Seller"
             ]
         },
         {
@@ -309,7 +309,7 @@
                 "lnphuong.05"
             ],
             "service": [
-                "Heart Seller (libfun)"
+                "Heart Seller"
             ]
         },
         {
@@ -328,7 +328,24 @@
             ],
             "service": [
                 "Seller",
-                "Heart Seller (libfun)"
+                "Heart Seller"
+            ]
+        },
+        {
+            "id": "LG23",
+            "fbName": "Moth Jea",
+            "bank": [
+                {
+                    "bankName": "Vietcombank",
+                    "bankNumber": "*******269",
+                    "name": "HUYNH THI KIM NGUYEN"
+                }
+            "fbUID": [
+                "100057112610337",
+                "yami.knguyn"
+            ],
+            "service": [
+                "Account seller"
             ]
         }
     ]

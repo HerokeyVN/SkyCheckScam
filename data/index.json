@@ -25,10 +25,10 @@
       "count": 100
     },
     {
-      "fileName": "scammers_401_430.json",
+      "fileName": "scammers_401_432.json",
       "startId": "SCS401",
-      "endId": "NaN",
-      "count": 30
+      "endId": "SCS432",
+      "count": 32
     }
   ]
 }

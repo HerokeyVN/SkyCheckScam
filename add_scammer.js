@@ -36,7 +36,9 @@ function generateNewId(existingData) {
   }
   
   // Find the maximum ID and increment by 1
-  const maxId = Math.max(...existingData.data.map(item => parseInt(item.id.replace("SCS", ''))));
+  const maxId = Math.max(...existingData.data.map(item => {
+    return parseInt(item.id.replace("SCS", ''))
+  }))
   return "SCS"+parseInt(maxId + 1);
 }
 

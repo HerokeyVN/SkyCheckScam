@@ -36,8 +36,8 @@ function generateNewId(existingData) {
   }
   
   // Find the maximum ID and increment by 1
-  const maxId = Math.max(...existingData.data.map(item => parseInt(item.id)));
-  return maxId + 1;
+  const maxId = Math.max(...existingData.data.map(item => parseInt(item.id.replace("SCS", ''))));
+  return "SCS"+parseInt(maxId + 1);
 }
 
 // Function to add a new scammer

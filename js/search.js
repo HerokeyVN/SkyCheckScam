@@ -688,7 +688,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (button) {
             button.addEventListener('click', function() {
                 // Increment search counter when any search button is clicked
-                fetch('https://counterapi.com/api/skycheck.scam/search')
+                fetch('https://counterapi.com/api/skycheckscam.com/search')
                     .catch(error => console.log('Counter API increment error:', error));
             });
         }
@@ -705,7 +705,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (box) {
             box.addEventListener('keypress', function(e) {
                 if (e.key === 'Enter') {
-                    fetch('https://counterapi.com/api/skycheck.scam/search')
+                    fetch('https://counterapi.com/api/skycheckscam.com/search')
                         .catch(error => console.log('Counter API increment error:', error));
                 }
             });

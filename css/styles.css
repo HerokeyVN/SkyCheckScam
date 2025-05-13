@@ -1,87 +1,4 @@
 /* Page Loader */
-.page-loader {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #161616 url('../assets/images/bg4.jpg');
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-    transition: opacity 0.8s, visibility 0.8s;
-}
-
-.page-loader.fade-out {
-    opacity: 0;
-    visibility: hidden;
-}
-
-.loader-content {
-    text-align: center;
-}
-
-.loader-icon {
-    position: relative;
-    width: 120px;
-    height: 120px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.loader-logo {
-    width: 80px;
-    height: 80px;
-    position: relative;
-    z-index: 2;
-    animation: pulse 2s infinite;
-}
-
-.loader-spinner {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border: 4px solid transparent;
-    border-top: 4px solid #eca08f;
-    border-radius: 50%;
-    animation: spin 1.5s linear infinite;
-}
-
-.loader-text {
-    margin-top: 20px;
-    font-size: 1.2rem;
-    color: #eca08f;
-    letter-spacing: 2px;
-}
-
-@keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.1);
-    }
-
-    100% {
-        transform: scale(1);
-    }
-}
 
 * {
     font-family: "Roboto", serif;
@@ -267,6 +184,62 @@ header .mini-search-section.hidden {
     opacity: 0;
     transform: translateY(-20px);
     pointer-events: none;
+}
+
+@keyframes typing {
+
+    0%,
+    100% {
+        border-color: transparent;
+    }
+
+    50% {
+        border-color: #eca08f;
+    }
+}
+
+.search-box.typing {
+    border-right: 2px solid #eca08f;
+    animation: typing 0.6s infinite;
+}
+
+.btn-clicked {
+    animation: btnPulse 0.5s ease;
+}
+
+@keyframes btnPulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.particle {
+    animation: fadeOut 1s ease forwards;
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(0.3);
+    }
+}
+
+.search.focus {
+    border: 2px solid #eca08f;
+    box-shadow: 0 0 20px rgba(236, 160, 143, 0.5);
 }
 
 .header-icons {

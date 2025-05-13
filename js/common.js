@@ -1,53 +1,7 @@
-window.addEventListener('load', function() {
-    // Hide loader when page is fully loaded
-    setTimeout(function() {
-        const pageLoader = document.getElementById('pageLoader');
-        if (pageLoader) {
-            pageLoader.classList.add('fade-out');
-            // Remove from DOM after animation completes
-            setTimeout(function() {
-                pageLoader.style.display = 'none';
-            }, 800);
-        }
-    }, 500); // Short delay to ensure everything is rendered
-});
-
 document.addEventListener('DOMContentLoaded', function () {
     const styleElement = document.createElement('style');
     styleElement.textContent = `
-        @keyframes typing {
-            0%, 100% { border-color: transparent; }
-            50% { border-color: #eca08f; }
-        }
         
-        .search-box.typing {
-            border-right: 2px solid #eca08f;
-            animation: typing 0.6s infinite;
-        }
-        
-        .btn-clicked {
-            animation: btnPulse 0.5s ease;
-        }
-        
-        @keyframes btnPulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
-        
-        .particle {
-            animation: fadeOut 1s ease forwards;
-        }
-        
-        @keyframes fadeOut {
-            0% { opacity: 1; transform: scale(1); }
-            100% { opacity: 0; transform: scale(0.3); }
-        }
-        
-        .search.focus {
-            border: 2px solid #eca08f;
-            box-shadow: 0 0 20px rgba(236, 160, 143, 0.5);
-        }
     `;
     document.head.appendChild(styleElement);
 

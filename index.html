@@ -46,6 +46,92 @@
 
     <title data-lang-key="pageTitle">Sky: Children of the Light - Scam Check</title>
     <link rel="stylesheet" href="./css/styles.css">
+
+    <style>
+        .page-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #161616 url('../assets/images/bg4.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.8s, visibility 0.8s;
+        }
+
+        .page-loader.fade-out {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-content {
+            text-align: center;
+        }
+
+        .loader-icon {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .loader-logo {
+            width: 80px;
+            height: 80px;
+            position: relative;
+            z-index: 2;
+            animation: pulse 2s infinite;
+        }
+
+        .loader-spinner {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 4px solid transparent;
+            border-top: 4px solid #eca08f;
+            border-radius: 50%;
+            animation: spin 1.5s linear infinite;
+        }
+
+        .loader-text {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            color: #eca08f;
+            letter-spacing: 2px;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -326,6 +412,20 @@
             <p data-lang-key="footerCopyright">&copy; 2025 Sky Check Scam. Not affiliated with thatgamecompany.</p>
         </div>
     </footer>
+
+    <script>
+        window.addEventListener('load', function () {
+            setTimeout(function () {
+                const pageLoader = document.getElementById('pageLoader');
+                if (pageLoader) {
+                    pageLoader.classList.add('fade-out');
+                    setTimeout(function () {
+                        pageLoader.style.display = 'none';
+                    }, 800);
+                }
+            }, 500);
+        });
+    </script>
 
     <script src="./js/translations.js"></script>
     <script src="./js/common.js"></script>

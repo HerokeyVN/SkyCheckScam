@@ -1,3 +1,17 @@
+window.addEventListener('load', function() {
+    // Hide loader when page is fully loaded
+    setTimeout(function() {
+        const pageLoader = document.getElementById('pageLoader');
+        if (pageLoader) {
+            pageLoader.classList.add('fade-out');
+            // Remove from DOM after animation completes
+            setTimeout(function() {
+                pageLoader.style.display = 'none';
+            }, 800);
+        }
+    }, 500); // Short delay to ensure everything is rendered
+});
+
 document.addEventListener('DOMContentLoaded', function () {
     const styleElement = document.createElement('style');
     styleElement.textContent = `

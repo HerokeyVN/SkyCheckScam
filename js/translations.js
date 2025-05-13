@@ -66,7 +66,8 @@ const translations = {
         footerLinkFacebook: "Facebook Group",
         footerLinkTwitter: "Twitter",
         footerLinkContact: "Contact me",
-        footerCopyright: "&copy; 2025 Sky Check Scam. Not affiliated with thatgamecompany."
+        footerCopyright: "&copy; 2025 Sky Check Scam. Not affiliated with thatgamecompany.",
+        loading: "Loading..."
     },
     vi: {
         pageTitle: "Sky: Children of the Light - Check Scammer",
@@ -134,7 +135,8 @@ const translations = {
         footerLinkFacebook: "Nhóm Facebook",
         footerLinkTwitter: "Twitter",
         footerLinkContact: "Liên hệ cho tôi",
-        footerCopyright: "&copy; 2025 Sky Check Scam. Không liên kết với thatgamecompany."
+        footerCopyright: "&copy; 2025 Sky Check Scam. Không liên kết với thatgamecompany.",
+        loading: "Đang tải..."
     }
 };
 

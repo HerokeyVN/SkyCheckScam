@@ -49,6 +49,16 @@
 </head>
 
 <body>
+    <div id="pageLoader" class="page-loader">
+        <div class="loader-content">
+            <div class="loader-icon">
+                <img src="./assets/logo/logo_circle.png" alt="Loading" class="loader-logo">
+                <div class="loader-spinner"></div>
+            </div>
+            <p class="loader-text" data-lang-key="loading">Loading...</p>
+        </div>
+    </div>
+
     <header>
         <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu">
             <span></span>
@@ -335,6 +345,14 @@
 
         // Start checking for the element
         convertCountToNumber();
+
+        // Hide the loading screen when the page is fully loaded
+        window.addEventListener('load', function () {
+            const loader = document.getElementById('pageLoader');
+            if (loader) {
+                loader.style.display = 'none';
+            }
+        });
     </script>
 </body>
 

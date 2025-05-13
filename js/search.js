@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const header = document.querySelector('header');
     const miniSearchSection = document.querySelector('.mini-search-section');
     const fullScreenSearch = document.getElementById('fullScreenSearch');
@@ -17,14 +17,14 @@ document.addEventListener('DOMContentLoaded', function() {
     let isLoadingLegitimateData = false;
 
     if (contentSearchBox) {
-        contentSearchBox.addEventListener('input', function() {
+        contentSearchBox.addEventListener('input', function () {
             if (mainSearchBox) mainSearchBox.value = this.value;
             if (miniSearchBox) miniSearchBox.value = this.value;
         });
     }
 
     if (contentSearchBtn) {
-        contentSearchBtn.addEventListener('click', function() {
+        contentSearchBtn.addEventListener('click', function () {
             if (contentSearchBox) {
                 const searchTerm = contentSearchBox.value.trim();
                 if (searchTerm.length > 3) {
@@ -36,17 +36,17 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    miniSearchBox.addEventListener('input', function() {
+    miniSearchBox.addEventListener('input', function () {
         mainSearchBox.value = this.value;
         if (contentSearchBox) contentSearchBox.value = this.value;
     });
 
-    mainSearchBox.addEventListener('input', function() {
+    mainSearchBox.addEventListener('input', function () {
         miniSearchBox.value = this.value;
         if (contentSearchBox) contentSearchBox.value = this.value;
     });
 
-    mainSearchBtn.addEventListener('click', function() {
+    mainSearchBtn.addEventListener('click', function () {
         const searchTerm = mainSearchBox.value.trim();
         if (searchTerm.length > 3) {
             performCombinedSearch();
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     if (document.querySelector('.mini-search-section .search-btn')) {
-        document.querySelector('.mini-search-section .search-btn').addEventListener('click', function() {
+        document.querySelector('.mini-search-section .search-btn').addEventListener('click', function () {
             const searchTerm = miniSearchBox.value.trim();
             if (searchTerm.length > 3) {
                 performCombinedSearch();
@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    mainSearchBox.addEventListener('keyup', function(event) {
+    mainSearchBox.addEventListener('keyup', function (event) {
         if (event.key === 'Enter') {
             const searchTerm = this.value.trim();
             if (searchTerm.length > 3) {
@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    miniSearchBox.addEventListener('keyup', function(event) {
+    miniSearchBox.addEventListener('keyup', function (event) {
         if (event.key === 'Enter') {
             const searchTerm = this.value.trim();
             if (searchTerm.length > 3) {
@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     if (contentSearchBox) {
-        contentSearchBox.addEventListener('keyup', function(event) {
+        contentSearchBox.addEventListener('keyup', function (event) {
             if (event.key === 'Enter') {
                 const searchTerm = this.value.trim();
                 if (searchTerm.length > 3) {
@@ -158,7 +158,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!text) return '';
         let normalizedText = String(text).toLowerCase();
         const vietnameseMap = {
-            'à': 'a', 'á': 'a', 'ả': 'a', 'ã': 'a', 'ạ': 'a', 
+            'à': 'a', 'á': 'a', 'ả': 'a', 'ã': 'a', 'ạ': 'a',
             'ă': 'a', 'ằ': 'a', 'ắ': 'a', 'ẳ': 'a', 'ẵ': 'a', 'ặ': 'a',
             'â': 'a', 'ầ': 'a', 'ấ': 'a', 'ẩ': 'a', 'ẫ': 'a', 'ậ': 'a',
             'đ': 'd',
@@ -174,7 +174,7 @@ document.addEventListener('DOMContentLoaded', function() {
         };
         for (const char in vietnameseMap) {
             normalizedText = normalizedText.replace(
-                new RegExp(char, 'g'), 
+                new RegExp(char, 'g'),
                 vietnameseMap[char]
             );
         }
@@ -264,13 +264,13 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     async function performCombinedSearch() {
-        const searchTerm = mainSearchBox.value.trim() || miniSearchBox.value.trim() || 
-                          (contentSearchBox ? contentSearchBox.value.trim() : '');
+        const searchTerm = mainSearchBox.value.trim() || miniSearchBox.value.trim() ||
+            (contentSearchBox ? contentSearchBox.value.trim() : '');
         if (searchTerm.length <= 3) {
             showMinimumLengthWarning();
             return;
         }
-        
+
         fullScreenSearch.classList.remove('active');
         miniSearchSection.classList.remove('hidden');
         if (resultsContainer) {
@@ -282,13 +282,13 @@ document.addEventListener('DOMContentLoaded', function() {
             `;
             resultsContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
-        
+
         // Check if the search term is a Facebook URL and extract UID if it is
         let finalSearchTerm = searchTerm;
         let extractedUID = null;
         let extractedName = null;
         let needsManualExtraction = false;
-        
+
         if (isFacebookURL(searchTerm)) {
             try {
                 const fbData = await extractFacebookUID(searchTerm);
@@ -306,7 +306,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 needsManualExtraction = true;
             }
         }
-        
+
         // Load scammer data if not already loaded
         if (!isScammerDataLoaded && !isLoadingScammerData) {
             isLoadingScammerData = true;
@@ -319,7 +319,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 isLoadingScammerData = false;
             }
         }
-        
+
         // Load legitimate users data if not already loaded
         if (!isLegitimateDataLoaded && !isLoadingLegitimateData) {
             isLoadingLegitimateData = true;
@@ -332,17 +332,17 @@ document.addEventListener('DOMContentLoaded', function() {
                 isLoadingLegitimateData = false;
             }
         }
-        
+
         let scammerResults = [];
         if (isScammerDataLoaded) {
             scammerResults = searchScammers(scammerData, finalSearchTerm);
         }
-        
+
         let legitimateResults = [];
         if (isLegitimateDataLoaded) {
             legitimateResults = searchLegitimateUsers(legitimateData, finalSearchTerm);
         }
-        
+
         displayCombinedResults(scammerResults, legitimateResults, searchTerm, extractedUID, needsManualExtraction);
         console.log("Search performed for:", searchTerm);
     }
@@ -350,15 +350,15 @@ document.addEventListener('DOMContentLoaded', function() {
     function isFacebookURL(str) {
         return str.includes('facebook.com/') || str.includes('fb.com/');
     }
-    
+
     async function extractFacebookUID(url) {
         try {
             url = url.trim();
-            
+
             if (!url.startsWith('http')) {
                 url = 'https://' + url;
             }
-            
+
             const idPattern = /facebook\.com\/profile\.php\?id=(\d+)/i;
             const idMatch = url.match(idPattern);
             if (idMatch && idMatch[1]) {
@@ -368,13 +368,13 @@ document.addEventListener('DOMContentLoaded', function() {
                     needsManualExtraction: false
                 };
             }
-            
+
             const usernamePattern = /facebook\.com\/([a-z0-9_.]+)|fb\.com\/([a-z0-9_.]+)/i;
             const usernameMatch = url.match(usernamePattern);
-            
+
             if (usernameMatch) {
                 const username = usernameMatch[1] || usernameMatch[2];
-                
+
                 const nonProfilePaths = ['pages', 'groups', 'events', 'photos', 'watch', 'gaming', 'marketplace'];
                 if (nonProfilePaths.includes(username.toLowerCase())) {
                     return {
@@ -383,14 +383,14 @@ document.addEventListener('DOMContentLoaded', function() {
                         needsManualExtraction: true
                     };
                 }
-                
+
                 return {
                     uid: username,
                     name: null,
                     needsManualExtraction: true
                 };
             }
-            
+
             return {
                 uid: null,
                 name: null,
@@ -416,7 +416,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <h2>${getTranslation('searchResultsFor')} "<span class="search-term">${searchTerm}</span>"</h2>
             </div>
         `;
-        
+
         if (isFacebookURL(searchTerm)) {
             if (extractedUID && !isNaN(extractedUID)) {
                 searchHeader += `<div class="uid-extraction-notice">
@@ -435,9 +435,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 `;
             }
         }
-        
+
         resultsContent.innerHTML = searchHeader;
-        
+
         const legitimateSection = document.createElement('div');
         legitimateSection.className = 'legitimate-results-section';
         if (isLegitimateDataLoaded) {
@@ -473,7 +473,7 @@ document.addEventListener('DOMContentLoaded', function() {
             `;
         }
         resultsContent.appendChild(legitimateSection);
-        
+
         const scammerSection = document.createElement('div');
         scammerSection.className = 'scammer-results-section';
         if (isScammerDataLoaded) {
@@ -517,7 +517,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const userCard = document.createElement('div');
         userCard.className = 'scammer-card';
         userCard.style.border = '1px solid rgba(66, 184, 131, 0.5)';
-        
+
         let bankInfoHTML = '';
         if (user.bank && user.bank.length) {
             bankInfoHTML = '<div class="bank-info"><h4 style="color: #42b883;">Bank Information</h4><ul>';
@@ -532,7 +532,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
             bankInfoHTML += '</ul></div>';
         }
-        
+
         let fbUIDHTML = '';
         if (user.fbUID && user.fbUID.length) {
             fbUIDHTML = '<div class="fb-uid-info"><h4 style="color: #42b883;">Facebook IDs</h4><ul>';
@@ -541,7 +541,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
             fbUIDHTML += '</ul></div>';
         }
-        
+
         let serviceHTML = '';
         if (user.service && user.service.length) {
             serviceHTML = '<div class="service-info"><h4 style="color: #42b883;">Trusted Services</h4><ul>';
@@ -550,7 +550,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
             serviceHTML += '</ul></div>';
         }
-        
+
         userCard.innerHTML = `
             <div class="scammer-header" style="background-color: rgba(66, 184, 131, 0.2);">
                 <h3>${user.fbName || 'Trusted User'}</h3>
@@ -632,7 +632,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     let lastScrollPosition = 0;
-    window.addEventListener('scroll', function() {
+    window.addEventListener('scroll', function () {
         const currentScrollPosition = window.pageYOffset;
         if (scrollToTop) {
             if (currentScrollPosition > 300) {
@@ -641,12 +641,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 scrollToTop.classList.remove('visible');
             }
         }
-        if (currentScrollPosition < 50) {
+        if (currentScrollPosition < 150) {
             if (miniSearchSection && !miniSearchSection.classList.contains('hidden')) {
                 miniSearchSection.classList.add('hidden');
             }
             if (fullScreenSearch) fullScreenSearch.classList.remove('active');
-        } else if (currentScrollPosition > 100) {
+        } else if (currentScrollPosition > 150) {
             if (fullScreenSearch) fullScreenSearch.classList.remove('active');
             if (miniSearchSection && miniSearchSection.classList.contains('hidden')) {
                 miniSearchSection.classList.remove('hidden');
@@ -660,7 +660,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     if (scrollToTop) {
-        scrollToTop.addEventListener('click', function() {
+        scrollToTop.addEventListener('click', function () {
             window.scrollTo({
                 top: 0,
                 behavior: 'smooth'
@@ -682,28 +682,28 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('mainSearchBtn'),
         document.getElementById('contentSearchBtn')
     ];
-    
+
     // Attach event listeners to each search button
     searchButtons.forEach(button => {
         if (button) {
-            button.addEventListener('click', function() {
+            button.addEventListener('click', function () {
                 // Increment search counter when any search button is clicked
                 fetch('https://counterapi.com/api/skycheckscam.com/search')
                     .catch(error => console.log('Counter API increment error:', error));
             });
         }
     });
-    
+
     // Also increment counter when Enter key is pressed in search boxes
     const searchBoxes = [
         document.querySelector('.mini-search-box'),
         document.getElementById('mainSearchBox'),
         document.getElementById('contentSearchBox')
     ];
-    
+
     searchBoxes.forEach(box => {
         if (box) {
-            box.addEventListener('keypress', function(e) {
+            box.addEventListener('keypress', function (e) {
                 if (e.key === 'Enter') {
                     fetch('https://counterapi.com/api/skycheckscam.com/search')
                         .catch(error => console.log('Counter API increment error:', error));

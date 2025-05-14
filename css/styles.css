@@ -16,6 +16,7 @@ body {
     width: -webkit-fill-available;
     height: -webkit-fill-available;
     margin: 0;
+    scroll-behavior: smooth;
 }
 
 body {

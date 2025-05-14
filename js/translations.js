@@ -141,5 +141,3 @@ const translations = {
         loading: "Đang tải..."
     }
 };
-
-// No export statement - this will be available globally

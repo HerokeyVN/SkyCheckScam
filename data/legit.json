@@ -348,6 +348,25 @@
             "service": [
                 "Account seller"
             ]
+        },
+        {
+            "id": "LG24",
+            "fbName": "Hoàng Long",
+            "bank": [
+                {
+                    "bankName": "VP Bank",
+                    "bankNumber": "0347384976",
+                    "name": "HOANG NHAT LONG"
+                }
+            ],
+            "fbUID": [
+                "100009454544509",
+                "longs.cunss"
+            ],
+            "service": [
+                "Seller",
+                "Heart Seller"
+            ]
         }
     ]
 }

@@ -183,6 +183,13 @@
         {
             "id": "LG13",
             "fbName": "Camellia Cam",
+            "bank": [
+                {
+                    "bankName": "Techcombank",
+                    "bankNumber": "**********4017",
+                    "name": "TRAN TUE MINH"
+                }
+            ],
             "fbUID": [
                 "100077685060606",
                 "nouuu13"

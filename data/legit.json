@@ -63,6 +63,13 @@
         {
             "id": "LG5",
             "fbName": "Minh Anh",
+            "bank": [
+                {
+                    "bankName": "MB Bank",
+                    "bankNumber": "*******680",
+                    "name": "NGUYEN THI MINH ANH"
+                }
+            ],
             "fbUID": [
                 "100085425849260",
                 "lim.bo05"

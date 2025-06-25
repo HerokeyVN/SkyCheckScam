@@ -416,6 +416,7 @@
                 "nanafyuo"
             ],
             "service": [
+                "Midman",
                 "Seller",
                 "Heart Seller"
             ]

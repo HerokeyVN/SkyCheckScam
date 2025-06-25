@@ -381,6 +381,130 @@
                 "Seller",
                 "Heart Seller"
             ]
+        },
+        {
+            "id": "LG25",
+            "fbName": "Xiena Xeina",
+            "fbUID": [
+                "100080635606356",
+                "xiienaxi"
+            ],
+            "service": [
+                "Seller",
+                "Heart Seller",
+                "Account seller",
+                "Account service"
+            ]
+        },
+        {
+            "id": "LG26",
+            "fbName": "Na Na",
+            "bank": [
+                {
+                    "bankName": "MB Bank",
+                    "bankNumber": "0789577932",
+                    "name": "TRAN LY THU NGAN"
+                },
+                {
+                    "bankName": "Momo",
+                    "bankNumber": "0789577932",
+                    "name": "TRAN LY THU NGAN"
+                }
+            ],
+            "fbUID": [
+                "100045622486281",
+                "nanafyuo"
+            ],
+            "service": [
+                "Seller",
+                "Heart Seller"
+            ]
+        },
+        {
+            "id": "LG27",
+            "fbName": "Ning Zhou",
+            "fbUID": [
+                "100003361309516"
+            ],
+            "service": [
+                "Midman",
+                "Account seller"
+            ]
+        },
+        {
+            "id": "LG28",
+            "fbName": "Muh Risnul Ihkwan ",
+            "fbUID": [
+                "100018664309441",
+                "muh.r.ihkwan.7"
+            ],
+            "service": [
+                "Midman",
+                "Account seller"
+            ]
+        },
+        {
+            "id": "LG29",
+            "fbName": "Trần Ngọc Phong",
+            "bank": [
+                {
+                    "bankName": "MB Bank",
+                    "bankNumber": "0975597260",
+                    "name": "LE QUYNH ANH"
+                },
+                {
+                    "bankName": "Momo",
+                    "bankNumber": "0975597260",
+                    "name": "LE QUYNH ANH"
+                },
+                {
+                    "bankName": "VCB",
+                    "bankNumber": "1031580060",
+                    "name": "LE QUYNH ANH"
+                }
+            ],
+            "fbUID": [
+                "100047407512863",
+                "ngocphong.tran.547"
+            ],
+            "service": [
+                "Account seller"
+            ]
+        },
+        {
+            "id": "LG30",
+            "fbName": "Phương Uyên",
+            "bank": [
+                {
+                    "bankName": "Vietcombank",
+                    "bankNumber": "1031720374",
+                    "name": "NGUYEN BACH PHUONG UYEN"
+                },
+                {
+                    "bankName": "Momo",
+                    "bankNumber": "*******457",
+                    "name": "NGUYEN BACH PHUONG UYEN"
+                }
+            ],
+            "fbUID": [
+                "100013334165976",
+                "kami.hoshi.9"
+            ],
+            "service": [
+                "Midman"
+            ]
+        },
+        {
+            "id": "LG31",
+            "fbName": "Ka Rodrigues",
+            "fbUID": [
+                "100044280335934",
+                "Ka.rodrigueszz"
+            ],
+            "service": [
+            	"Seller",
+                "Account seller"
+            ]
         }
     ]
 }

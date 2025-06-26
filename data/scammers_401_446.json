@@ -511,11 +511,32 @@
       "realName": "Mico Biala",
       "phone": "",
       "mail": "",
-      "bank": [],
+      "bank": [
+        {
+          "bankName": "Bank of the Philippine Islands (BPI)",
+          "bankNumber": "1259455347",
+          "name": "Mico Espino Biala"
+        },
+        {
+          "bankName": "PayPal",
+          "bankNumber": "09453472661",
+          "name": "Mico Espino Biala"
+        },
+        {
+          "bankName": "PayPal",
+          "bankNumber": "unicornkwin30@gmail.com",
+          "name": "Mico Espino Biala"
+        },
+        {
+          "bankName": "GCash",
+          "bankNumber": "09453472661",
+          "name": "Mico Espino Biala"
+        }
+      ],
       "fbUID": [
         "100022854711384"
       ],
-      "linkWarn": "https://www.facebook.com/share/p/1YBNUgdnEg/\\nhttps://www.facebook.com/share/p/16UTg2YKFd/\\nhttps://www.facebook.com/share/p/1DvDVLGnm3/"
+      "linkWarn": "https://www.facebook.com/share/p/1YBNUgdnEg/\nhttps://www.facebook.com/share/p/16UTg2YKFd/\nhttps://www.facebook.com/share/p/1DvDVLGnm3/"
     },
     {
       "id": "SCS430",

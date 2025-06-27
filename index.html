@@ -193,10 +193,6 @@
                 <a href="#scamReportForm" class="nav-btn"><i class="bi bi-shield-exclamation"></i> <span
                         data-lang-key="navReportScam">Report Scam</span></a>
             </div>
-
-            <!-- Removed mobile-menu-search since we're keeping the mini search box in the header -->
-
-            <!-- Removed mobile-language-selector since we're keeping the language selector in the header -->
         </div>
     </div>
 
@@ -241,7 +237,7 @@
             <h4 class="section-title"><i class="bi bi-clock-history"></i> <span
                     data-lang-key="titleRecentReports">Recent Reports</span></h4>
             <div class="reports-grid">
-                <div class="report-item">
+                <!-- <div class="report-item">
                     <div class="report-icon danger"><i class="bi bi-exclamation-triangle"></i></div>
                     <div class="report-content">
                         <h5 data-lang-key="reportExample1Title">Account stolen after trading</h5>
@@ -279,7 +275,7 @@
                             gift items.</p>
                         <span class="report-time" data-lang-key="reportTimeExample4">2 days ago</span>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
 
@@ -425,6 +421,16 @@
                 }
             }, 500);
         });
+
+        setTimeout(()=>{
+            const pageLoader = document.getElementById('pageLoader');
+            if (pageLoader) {
+                pageLoader.classList.add('fade-out');
+                setTimeout(function () {
+                    pageLoader.style.display = 'none';
+                }, 800);
+            }
+        }, 5 * 1000);
     </script>
 
     <script src="./js/translations.js"></script>

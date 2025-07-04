@@ -506,6 +506,29 @@
             	"Seller",
                 "Account seller"
             ]
+        },
+        {
+            "id": "LG32",
+            "fbName": "Nguyễn Vân Khánh",
+            "bank": [
+                {
+                    "bankName": "MB Bank",
+                    "bankNumber": "0915470050",
+                    "name": "NGUYEN VAN KHANH"
+                },
+                {
+                    "bankName": "Momo",
+                    "bankNumber": "0915470050",
+                    "name": "Nguyễn Vân Khánh"
+                }
+            ],
+            "fbUID": [
+                "100075793698153",
+                "nguyen.van.khanh.322298"
+            ],
+            "service": [
+            	"Seller"
+            ]
         }
     ]
 }

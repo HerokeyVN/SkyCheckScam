@@ -529,6 +529,24 @@
             "service": [
             	"Seller"
             ]
+        },
+        {
+            "id": "LG33",
+            "fbName": "Kem Sữa",
+            "bank": [
+                {
+                    "bankName": "MB Bank",
+                    "bankNumber": "0927939897",
+                    "name": "NGUYEN THU TRANG"
+                }
+            ],
+            "fbUID": [
+                "61553345784110",
+                "liny.miru"
+            ],
+            "service": [
+                "Heart Seller"
+            ]
         }
     ]
 }

@@ -109,8 +109,6 @@ document.addEventListener('DOMContentLoaded', function () {
         updateActiveNavTab('#');
     }
 
-    // Use the translations global variable directly
-    // No need for import since translations.js is loaded by script tag before common.js
     if (typeof translations !== 'undefined') {
         initializeLanguageSystem(translations);
     } else {
@@ -179,7 +177,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const mobileNav = document.getElementById('mobileNav');
     const mobileMenuLinks = document.querySelectorAll('.mobile-menu-nav .nav-btn');
 
-    // Removed mobile search and language references
     const body = document.body;
 
     // Function to toggle mobile menu
@@ -221,10 +218,6 @@ document.addEventListener('DOMContentLoaded', function () {
             this.classList.add('active');
         });
     });
-
-    // Removed mobile search functionality
-
-    // Removed language selection in mobile menu
 
     // Sync active link between desktop and mobile menu
     function syncActiveNavLink() {

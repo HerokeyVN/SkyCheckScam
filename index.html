@@ -443,13 +443,11 @@
         function convertCountToNumber() {
             const countElement = document.querySelector("#statSearchesMonth .thecount");
             if (countElement) {
-                countElement.innerText = Number(countElement.innerText);
+                countElement.innerText = countElement.innerText.trim();
             } else {
-                setTimeout(convertCountToNumber, 1000); // Check again after 500ms
+                setTimeout(convertCountToNumber, 1000);
             }
         }
-
-        // Start checking for the element
         convertCountToNumber();
 
         // Hide the loading screen when the page is fully loaded
@@ -459,6 +457,13 @@
                 loader.style.display = 'none';
             }
         });
+
+        setTimeout(() => {
+            const loader = document.getElementById('pageLoader');
+            if (loader) {
+                loader.style.display = 'none';
+            }
+        }, 5000);
     </script>
 </body>
 

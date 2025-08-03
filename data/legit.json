@@ -525,7 +525,7 @@
         },
         {
             "id": "LG33",
-            "fbName": "Kem Sữa",
+            "fbName": "Sạp Lumora",
             "bank": [
                 {
                     "bankName": "MB Bank",
@@ -534,11 +534,29 @@
                 }
             ],
             "fbUID": [
-                "61553345784110",
-                "liny.miru"
+                "100087153199605",
+                "SapLumora"
             ],
             "service": [
                 "Heart Seller"
+            ]
+        },
+        {
+            "id": "LG34",
+            "fbName": "Thiên Thư",
+            "bank": [
+                {
+                    "bankName": "MB Bank",
+                    "bankNumber": "0767420906",
+                    "name": "NGUYEN VU THIEN THU"
+                }
+            ],
+            "fbUID": [
+                "61550497514386",
+                "inorious"
+            ],
+            "service": [
+                "Account service"
             ]
         }
     ]

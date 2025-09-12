@@ -1028,15 +1028,21 @@
     {
       "id": "SCS460",
       "fbName": "Khải Ngô",
-      "realName": "",
+      "realName": "Ngô Xuân Khải",
       "phone": "",
       "mail": "",
-      "bank": [],
+      "bank": [
+        {
+          "bankName": "CCCD",
+          "bankNumber": "001098014335",
+          "name": "Ngô Xuân Khải"
+        }
+      ],
       "fbUID": [
         "61576037141418",
         "503222092"
       ],
-      "linkWarn": "https://www.facebook.com/groups/880927309569928/permalink/1503457730650213/"
+      "linkWarn": "https://www.facebook.com/groups/880927309569928/permalink/1503457730650213/ \n https://www.facebook.com/groups/880927309569928/permalink/1504818467180806/"
     },
     {
       "id": "SCS461",

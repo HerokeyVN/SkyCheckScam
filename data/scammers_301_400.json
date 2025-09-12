@@ -1227,14 +1227,20 @@
     },
     {
       "id": "SCS380",
-      "phone": "",
-      "bank": [],
-      "fbName": "https://www.facebook.com/profile.php?id=61563888325000",
-      "realName": "Đào Zawrt",
+      "phone": "0377518602",
+      "bank": [
+        {
+          "bankName": "MB Bank",
+          "bankNumber": "79299599999",
+          "name": "NGUYEN NGOC HAO"
+        }
+      ],
+      "fbName": "Sky COTL Account Seller",
+      "realName": "Nguyễn Ngọc Hào",
       "fbUID": [
         "61558008527595"
       ],
-      "linkWarn": "",
+      "linkWarn": "https://www.facebook.com/groups/1358131795121370/posts/1847670359500842/",
       "method": {
         "vi_VN": "",
         "en_US": ""

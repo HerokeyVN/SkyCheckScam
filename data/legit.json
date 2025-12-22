@@ -114,29 +114,6 @@
             ]
         },
         {
-            "id": "LG9",
-            "fbName": "Phạm Hiếu",
-            "bank": [
-                {
-                    "bankName": "MB Bank",
-                    "bankNumber": "0826795958",
-                    "name": "PHAM TRUNG HIEU"
-                },
-                {
-                    "bankName": "Momo",
-                    "bankNumber": "0826795958",
-                    "name": "PHAM TRUNG HIEU"
-                }
-            ],
-            "fbUID": [
-                "100047085452963",
-                "Shoppasspack"
-            ],
-            "service": [
-                "Seller"
-            ]
-        },
-        {
             "id": "LG10",
             "fbName": "Minh Tú",
             "bank": [
